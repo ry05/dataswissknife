@@ -22,7 +22,7 @@ The dataswissknife is a tool that has been specifically written to help beginner
 
 5. Run the following command to start the tool 
 
-   ```
+   ```bash
    python dataswissknife/main_code.py
    ```
 
