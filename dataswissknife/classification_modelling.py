@@ -85,14 +85,14 @@ class Baseline:
             self.model_names.append(model)
             kfold = StratifiedKFold(n_splits=cv_folds, random_state=self.SEED)
             cv_results = cross_validate(self.baseline_models[model], self.X_tr, self.y_tr, cv=kfold,
-                                        scoring=('accuracy', 'f1_micro', 'precision_micro',
-                                                 'recall_micro'),
+                                        scoring=('accuracy', 'f1_macro', 'precision_macro',
+                                                 'recall_macro'),
                                         return_estimator=True)
             # update model info
             self.acc.append(cv_results['test_accuracy'].mean())
-            self.f1.append(cv_results['test_f1_micro'].mean())
-            self.prec.append(cv_results['test_precision_micro'].mean())
-            self.rec.append(cv_results['test_recall_micro'].mean())
+            self.f1.append(cv_results['test_f1_macro'].mean())
+            self.prec.append(cv_results['test_precision_macro'].mean())
+            self.rec.append(cv_results['test_recall_macro'].mean())
             #roc_auc.append(cv_results['roc_auc'].mean())
             self.fit_times.append(cv_results['fit_time'].mean())
             self.score_times.append(cv_results['score_time'].mean())
@@ -108,6 +108,15 @@ class Baseline:
                 'Time to predict on test split':self.score_times
         })
                
+    def equate_test_to_train(self):
+        """
+        Select features from test data based on the features present in
+        the train data
+        """
+        
+        tr_feat = list(self.X_tr.columns)
+        self.X_te = self.X_te[tr_feat]        
+    
     def choose_model(self):
         """
         Choose the model
@@ -116,6 +125,10 @@ class Baseline:
         ind = int(input("Enter the index of the model that you prefer to "
                         "use on the test data:"))
         model = self.estimators[ind]
+        
+        # subset test to the features that train knows about
+        self.equate_test_to_train()
+        
         preds = model.predict(self.X_te)
         acc_score = accuracy_score(self.y_te, preds)
         

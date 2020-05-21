@@ -7,11 +7,16 @@ Main Code File for ADSAML
 import pandas as pd
 import numpy as np
 import os
+import sys
 import matplotlib.pyplot as plt
 import seaborn as sns
 import tkinter as tk
 from tkinter import filedialog
 import pickle
+
+from colorama import Fore, Back, Style, init
+from termcolor import colored
+init()
 
 import load_data as ld
 import clean_data as cd
@@ -20,7 +25,36 @@ import visualize_data as vd
 import classification_modelling as cm
 
 
+#-----Print the Welcome-----#
+print(colored((r"""
+ ____        _        ____          _         _  __      _  __      
+|  _ \  __ _| |_ __ _/ ___|_      _(_)___ ___| |/ /_ __ (_)/ _| ___ 
+| | | |/ _` | __/ _` \___ \ \ /\ / / / __/ __| ' /| '_ \| | |_ / _ \
+| |_| | (_| | || (_| |___) \ V  V /| \__ \__ \ . \| | | | |  _|  __/
+|____/ \__,_|\__\__,_|____/ \_/\_/ |_|___/___/_|\_\_| |_|_|_|  \___|
+
+A Handy Little Tool for your Data Science Operations            
+"""),
+    'white'))
+
+print(colored(
+        'Authors: Ramshankar Yadhunath, Srikanth Srivenkata, Arvind Sudheer', 
+              'white', 'on_red')
+)
+
+
 #-----Creating the Project Directory in Host System-----#
+
+print(r""" 
+  __               _       _                      _                        __                           
+ (_ _|_  _  ._    / \ o   /  ._ _   _. _|_  _    |_) ._ _  o  _   _ _|_   (_ _|_ ._     _ _|_     ._ _  
+ __) |_ (/_ |_)   \_/ o   \_ | (/_ (_|  |_ (/_   |   | (_) | (/_ (_  |_   __) |_ | |_| (_  |_ |_| | (/_ 
+            |                                             _|                                            
+ Create the structure of your project in your local system
+""")
+print(colored('INSTRUCTIONS :', 'white', 'on_blue'))
+print("1. Choose a directory in your system in which you want the project structure to be built\n"
+      "2. Enter the name of your project's root directory\n")
 
 # Choose the folder
 window = tk.Tk()
@@ -51,6 +85,11 @@ os.mkdir(clean_data_path)
 processed_data_path = os.path.join(data_path, "processed")
 os.mkdir(processed_data_path)
 
+# outputs
+print()
+print(colored('OUTPUTS :', 'white', 'on_green'))
+print("The project structure has been created in", root_path)
+
 
 #-----Global Parameters-----#
  
@@ -67,6 +106,17 @@ DATASET_NAME = None
 
 #-----Loading the dataset-----#
 
+print(r""" 
+  __                      _                                         
+ (_ _|_  _  ._    /| o   | \  _. _|_  _.   |   _   _.  _| o ._   _  
+ __) |_ (/_ |_)    | o   |_/ (_|  |_ (_|   |_ (_) (_| (_| | | | (_| 
+            |                                                    _| 
+ Load the dataset for the project from your local system
+""")
+print(colored('INSTRUCTIONS :', 'white', 'on_blue'))
+print("1. Choose the .csv dataset from your system\n"
+      "2. Rename your dataset\n")
+
 # Load the Dataset
 window = tk.Tk()
 window.title("Choose the dataset to load")
@@ -82,21 +132,29 @@ try:
     df.to_csv(raw_data_path, index=False)
 except:
     print("Error creating dataframe\n")
-
-print("\n\nBRIEF INFORMATION ABOUT THE DATA")
-print("--------------------------------\n")
-print("Dataset loaded from :", dataset_path)
-print("Copy of dataset stored at :", PROJ_RAW_DATA)
+    
+# outputs
 print()
-print("> Shape of dataset :",df.shape)
-print("> Preview of dataset :")
+print(colored('OUTPUTS :', 'white', 'on_green'))
+print(colored('Brief information about the data', 'blue', 'on_white'))
+print("Copy of dataset stored at :", PROJ_RAW_DATA)
+print("Shape of dataset :",df.shape)
+print("Preview of dataset :")
 print(df.head().to_markdown())
 
 
 #-----Cleaning the dataset-----#
 
-print("\n\nCLEANING THE DATASET")
-print("--------------------\n")
+print(r""" 
+  __              _       _                 _                         
+ (_ _|_  _  ._     ) o   | \  _. _|_  _.   /  |  _   _. ._  o ._   _  
+ __) |_ (/_ |_)   /_ o   |_/ (_|  |_ (_|   \_ | (/_ (_| | | | | | (_| 
+            |                                                      _| 
+ Clean the dataset and rid it of values that affect its credibility
+""")
+print(colored('INSTRUCTIONS :', 'white', 'on_blue'))
+print("1. Answer the questions asked by the system to clean up the data\n")
+
 raw_data_path = os.path.join(PROJ_RAW_DATA, (DATASET_NAME+".csv"))
 df = pd.read_csv(raw_data_path)
 
@@ -110,29 +168,24 @@ print(dc.df.head().to_markdown())
 clean_data_path = os.path.join(PROJ_CLEAN_DATA, (DATASET_NAME+".csv"))
 dc.df.to_csv(clean_data_path, index=False)
 
+# outputs
+print()
+print(colored('OUTPUTS :', 'white', 'on_green'))
+print("The cleaned data has been loaded in", clean_data_path)
 
-#-----Allowing the user to choose whether the project is ML-based or not-----#
-
-"""
-print("\n\nCHOOSE YOUR FORM OF PROJECT")
-print("Choose datatypes for each feature\n"
-      "-> Enter the type of project you are working on\n"
-      "-> Enter 1 if it involves Supervised Machine Learning\n"
-      "-> Enter 2 if it doesnot involve Machine Learning and is purely"
-      " analytical\n"
-      "-> Default Options: Supervised Machine Learning\n"
-     )
-choice = input("Your choice:")
-if (choice=='2'):
-    # something
-else:
-    # something2
-"""
 
 #-----Preprocessing the dataset-----#
 
-print("\n\nPREPROCESSING THE DATASET")
-print("-------------------------\n")
+print(r""" 
+  __              _       _                 _                                         
+ (_ _|_  _  ._    _) o   | \  _. _|_  _.   |_) ._ _  ._  ._ _   _  _   _  _ o ._   _  
+ __) |_ (/_ |_)   _) o   |_/ (_|  |_ (_|   |   | (/_ |_) | (_) (_ (/_ _> _> | | | (_| 
+            |                                        |                             _| 
+ Convert the cleaned data into a format more suitable for Machine Learning
+""")
+print(colored('INSTRUCTIONS :', 'white', 'on_blue'))
+print("1. Answer the questions asked by the system to preprocess the data\n")
+
 df = pd.read_csv(clean_data_path)
 
 # take in the target feature
@@ -166,21 +219,33 @@ if(target!='None'):
                          index=False)
     preproc_test_tar.to_csv((os.path.join(PROJ_PROCESSED_DATA,"test_solution.csv")),
                          index=False)
-    
-    print("Preprocessed datasets have been loaded into path:",
-          PROJ_PROCESSED_DATA)
-    
+       
 else:
     print("No target feature specified. So, no preprocessing performed.\n")
     train = pd.read_csv(clean_data_path)
     # no need to go into preprocessing if there is no target
     pass
-    
+   
+# outputs
+print()
+print(colored('OUTPUTS :', 'white', 'on_green'))
+print("1. The preprocessed data has been loaded in", PROJ_PROCESSED_DATA)
+print("2.",PROJ_PROCESSED_DATA," has train.csv, test.csv and test_solution.csv")
+print("3.",colored("train.csv", 'cyan'),"contains both descriptor and target features")
+print("4.",colored("test.csv", 'cyan'),"contains only descriptor features")
+print("5.",colored("test_solution.csv", 'cyan'),"contains only target features of"
+      "",colored("test.csv", 'cyan'))
+
 
 #-----Auto-generating Visualizations-----#
        
-print("\n\nAUTO-GENERATING THE DATASET")
-print("-------------------------\n")
+print(r""" 
+  __                        _                                                           
+ (_ _|_  _  ._    |_|_ o   | \  _. _|_  _.   \  / o  _      _. | o _   _. _|_ o  _  ._  
+ __) |_ (/_ |_)     |  o   |_/ (_|  |_ (_|    \/  | _> |_| (_| | | /_ (_|  |_ | (_) | | 
+            |                                                                           
+ Generate visualizations from the data. Will be auto-generated by this module.
+""")
 
 # make them dataframes
 train = pd.read_csv(os.path.join(PROJ_PROCESSED_DATA,"train.csv"))
@@ -191,11 +256,21 @@ test_solution = pd.read_csv(os.path.join(PROJ_PROCESSED_DATA,"test_solution.csv"
 viz = vd.FinalPlotter(train, test, target, pp.give_feat_list(), PROJ_VIZ)
 viz.plot_it_all()
 
+# outputs
+print()
+print(colored('OUTPUTS :', 'white', 'on_green'))
+print("The auto-generated visualizations are stored in", PROJ_VIZ)
+
 
 #-----Modelling Data-----#
  
-print("\n\nMODELLING")
-print("-------------------------\n")
+print(r""" 
+  __               _                                     
+ (_ _|_  _  ._    |_  o   |\/|  _   _|  _  | | o ._   _  
+ __) |_ (/_ |_)    _) o   |  | (_) (_| (/_ | | | | | (_| 
+            |                                         _|    
+ Build baseline predictive models for supervised classification 
+""")
 
 bm = cm.Baseline(X_tr, y_tr, X_te, y_te)
 model = bm.disp_it()
@@ -203,7 +278,10 @@ model = bm.disp_it()
 # store the model as a .pkl file
 with open(os.path.join(PROJ_MODELS,'model.pkl'), 'wb') as file:
     pickle.dump(model, file=file)
-    
+ 
+# outputs
+print()
+print(colored('OUTPUTS :', 'white', 'on_green'))
 print("Your preffered model has been stored at",
       os.path.join(PROJ_MODELS,'model.pkl'))
 

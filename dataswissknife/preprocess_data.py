@@ -68,6 +68,46 @@ class Essentials:
         
         return (len(list(self.df[feature].unique())))
     
+    def prompt_id_removal(self):
+        """
+        Prompts the user to remove features that look like 'id' features
+        """
+        
+        potential_ids = []
+        above_70 = []
+        
+        for feat in self.X.columns:
+            uniq_percent = len(self.X[feat].unique()) / (self.X.shape[0])
+            if(uniq_percent == 1):
+                potential_ids.append(feat)
+            elif(uniq_percent > 0.70):
+                above_70.append(feat)
+            else:
+                continue
+            
+        if(len(potential_ids)==0):
+            pass
+        elif(len(potential_ids)==1):
+            self.X = self.X.drop(potential_ids, axis=1)
+            self.df_test = self.df_test.drop(potential_ids, axis=1) 
+            print("The feature",potential_ids[0], "has been removed as it",
+                  "has been recognized as an identifier feature")
+        else:
+            self.X = self.X.drop(potential_ids, axis=1)
+            self.df_test = self.df_test.drop(potential_ids, axis=1)
+            print("The features",','.join(potential_ids), "have been removed",
+                  "as they have been recognized as an identifier feature")
+        
+        for feat in above_70:
+            print("Do you wish to remove the feature",feat,
+                  "as it has a high unique value percentage(greater than 70%) ?",
+                  "\nEnter y for yes, else enter anything")
+            ans = input()
+            if(ans=='y'):
+                self.X = self.X.drop([feat], axis=1)
+            else:
+                continue        
+    
     def df_ftypes(self):
         """
         Returns the feature types i.e (ordinal, nominal, interval, numeric)
@@ -207,7 +247,7 @@ class ProcessRatios(Essentials):
         else:
             pass    
         
-    def to_scale(self, feat):
+    def to_scale(self):
         """
         Asks user whether to scale a given ratio feature or not
 
@@ -217,8 +257,8 @@ class ProcessRatios(Essentials):
         Returns:
             Boolean status
         """
-
-        print("Do you wish to scale(normalize) the feature titled",feat,"?")
+        
+        print("Do you wish to scale(normalize) the numerical features?")
         ans = input("Enter your choice (y or n). Anything else will default to"
                     " y. ")
         if(ans=='n'):
@@ -246,11 +286,11 @@ class ProcessRatios(Essentials):
         
         print("\nNORMALIZING NUMERICAL FEATURES >\n")
         
-        for feat in self.ratio:
-            if(self.to_scale(feat)):
+        if(self.to_scale()):
+            for feat in self.ratio:
                 self.minmaxscale(feat)
-            else:
-                print("\nNot scaling",feat,"as per your request")
+        else:
+            print("\nNot scaling features as per your request")
        
 
 class ProcessOrdinals(Essentials):
@@ -338,10 +378,10 @@ class ProcessNominals(Essentials):
         
         print("\nONE HOT ENCODING NOMINAL FEATURES >\n")
         
-        # one-hot ecnode train
+        # one-hot encode train
         self.X = pd.get_dummies(self.X, columns=self.nominal)
         
-        # one-hot ecnode test
+        # one-hot encode test
         # Assumption: No new category exists in the test set
         self.df_test = pd.get_dummies(self.df_test, columns=self.nominal)
  
@@ -419,8 +459,9 @@ class ProcessTarget(Essentials):
             
         except:
             # hope code never enters in here
-            print("TEST TARGET HAS CLASSES NOT SEEN IN TRAIN DATA...")
-        
+            print("TEST TARGET HAS CLASSES NOT SEEN IN TRAIN DATA...\n",
+                  "Currently, there is no support for this")
+            pass
 
 class PreProcessor(ProcessRatios, ProcessNominals, ProcessOrdinals,
                    ProcessIntervals, ProcessTarget):
@@ -445,6 +486,7 @@ class PreProcessor(ProcessRatios, ProcessNominals, ProcessOrdinals,
     def preprocess_data(self):
         """Preprocess data in steps"""
         
+        self.prompt_id_removal()
         self.df_ftypes()                # categorize into types of features
         self.does_order_matter()
         self.outlier_removal()
@@ -474,11 +516,25 @@ class PreProcessor(ProcessRatios, ProcessNominals, ProcessOrdinals,
         print("\nPreview of Preprocessed Test Target Labels >\n")
         print(self.test_target.head().to_markdown())
         
+    def update_feat_lists(self):
+        """
+        Update the feature types' lists
+        -----
+        It's important as one-hot encoding changes the names of features
+        """
+        
+        self.non_numericals = list(set(self.final_train.columns) -
+                                   set(self.numericals))
+        self.nominal = list(set(self.final_train.columns) -
+                            set(self.ratio + self.ordinal + self.interval))
+    
     def give_feat_list(self):
         """
         Return the different feature types in the data
         Used for visualize data.py
         """
+        
+        self.update_feat_lists()
         
         return (self.numericals, self.non_numericals, self.ratio, 
                 self.ordinal, self.nominal,  self.interval, self.interval_sep)

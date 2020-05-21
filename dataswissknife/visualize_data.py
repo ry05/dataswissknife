@@ -136,18 +136,23 @@ class TrainTestCompare(Initiator):
         card_overload = []   # features that have a cardinality of 13 and above
         
         for feat in self.non_numericals:
-            if(self.max_cardinality(feat)<13):
-                fig, axs = plt.subplots(2,1, figsize=(20,10))
-                sns.countplot(data=self.train_df, x=feat, ax=axs[0])
-                sns.countplot(data=self.test_df, x=feat, ax=axs[1])
-                # label and save the plot
-                fig.suptitle("Train-test distribution comparison of "+feat,
-                             fontsize=20)
-                figname = feat+'_train_test_compare.png'
-                plt.savefig(os.path.join(self.output_loc,figname))
-                #plt.show()
-            else:
-                card_overload.append(feat)
+            
+            try:
+                if(self.max_cardinality(feat)<13):
+                    fig, axs = plt.subplots(2,1, figsize=(20,10))
+                    sns.countplot(data=self.train_df, x=feat, ax=axs[0])
+                    sns.countplot(data=self.test_df, x=feat, ax=axs[1])
+                    # label and save the plot
+                    fig.suptitle("Train-test distribution comparison of "+feat,
+                                 fontsize=20)
+                    figname = feat+'_train_test_compare.png'
+                    plt.savefig(os.path.join(self.output_loc,figname))
+                    #plt.show()
+                else:
+                    card_overload.append(feat)
+                
+            except:
+                continue
                 
         print("The following features have cardinalities > 12 and hence have",
               "not been plotted. You may do so separately.")
@@ -210,15 +215,17 @@ class FinalPlotter(TrainTestCompare, RelWithLabels):
         """
         Seaborn pairplot
         """
-        
-        # train data
-        sns.pairplot(self.train_df)
-        figname = 'train_pairplot.png'
-        plt.savefig(os.path.join(self.output_loc,figname))
-        # test data
-        sns.pairplot(self.test_df)
-        figname = 'test_pairplot.png'
-        plt.savefig(os.path.join(self.output_loc,figname))
+        try:
+            # train data
+            sns.pairplot(self.train_df)
+            figname = 'train_pairplot.png'
+            plt.savefig(os.path.join(self.output_loc,figname))
+            # test data
+            sns.pairplot(self.test_df)
+            figname = 'test_pairplot.png'
+            plt.savefig(os.path.join(self.output_loc,figname))
+        except:
+            pass
     
     def plot_it_all(self):
         
