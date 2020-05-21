@@ -1,6 +1,6 @@
-# dataSwissKnife
+# DataSwissKnife
 
-A Handy Little Tool to aid your Data Science Project
+A Handy Little Tool for your Data Science Operations
 
 ## The Purpose
 
