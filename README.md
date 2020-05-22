@@ -2,6 +2,8 @@
 
 A Handy Little Tool for your Data Science Operations
 
+![Logo](/img/dsk_logo.png)
+
 ## The Purpose
 
 The dataswissknife is a tool that has been specifically written to help beginners in data science to quickly clean, pre-process and visualize tabular data **without  writing code**. This tool is a part of the CSE Final Year Project for <COURSE CODE> at [Amrita School of Engineering, Bangalore](https://www.amrita.edu/campus/bengaluru). 
