@@ -2,7 +2,9 @@
 
 A Handy Little Tool for your Data Science Operations
 
-![Logo](/img/dsk_logo.png)
+<p align="center"> 
+   <img src="/img/dsk_logo.png">
+</p>
 
 ## The Purpose
 
