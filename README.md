@@ -6,6 +6,35 @@ A Handy Little Tool for your Data Science Operations
    <img src="/img/dsk_logo.png">
 </p>
 
+/github/license/:user/:repo
+
+## Description
+- What does it do?
+
+### Background - Why is this important?
+- Can include who it is for
+- Can inform what it helps with in specific
+   - like reduce time to clean data
+
+## Usage 
+- Examples of how to use
+- Links to other wholesome explanations
+
+## Support
+- Provide mail id so people can reach you
+- Also ask people to help out with suggestions if they have any
+
+## Authors and ackowledgement
+- Names of authors
+- Ackowledge the college
+- Acknowledge your test subjects (if any)
+- Acknowledge teachers who review it
+- Anybody else
+
+## License
+- Which license? (MIT)
+- Put it here
+
 ## The Purpose
 
 The dataswissknife is a tool that has been specifically written to help beginners in data science to quickly clean, pre-process and visualize tabular data **without  writing code**. This tool is a part of the CSE Final Year Project for <COURSE CODE> at [Amrita School of Engineering, Bangalore](https://www.amrita.edu/campus/bengaluru). 
