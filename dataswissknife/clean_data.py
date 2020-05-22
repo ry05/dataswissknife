@@ -10,6 +10,9 @@ import sys
 import itertools
 import re
 
+from colorama import Fore, Back, Style, init
+from termcolor import colored
+init()
 
 class Initiator:
     """
@@ -184,6 +187,27 @@ class MissingValueDealer(Initiator):
         
         super(MissingValueDealer, self).__init__(dataframe)
 
+    def disp_miss_percent(self):
+        """
+        Display missing value percentages in the dataset
+        """
+        
+        cols = []
+        miss_val_percent = []
+        
+        for feat in self.df.columns:
+            cols.append(feat)
+            miss_val_percent.append(
+                    self.df[feat].isna().sum() / self.df.shape[0]
+            )
+            
+        d = pd.DataFrame({'Name of Feature':cols,
+             'Percentage of Missing Values':miss_val_percent
+             })
+            
+        print("Missing Value Percentages in the Dataset")
+        print(d.to_markdown())
+        
     def missing_exists(self):
         """
         Checks if missing values exist
@@ -249,13 +273,17 @@ class MissingValueDealer(Initiator):
         Parameters:
             feature (str): The name of the feature
         """
-
-        method = input("\nCHOOSE METHOD FOR IMPUTING MISSING VALUES IN "
-                  "NUMERIC FEATURES\n"
-                  "-> Enter 1 for 'Imputing with Mean'\n"
-                  "-> Enter 2 for 'Imputing with Median'\n"
-                  "-> Enter 3 for 'Imputing with Mode'\n"
-                  "\nYour Choice : ")
+        
+        print(colored('Choose method for imputing missing values in numerical features >',
+                      'red','on_white'))
+        print(colored("-> Enter 1 for 'Imputing with Mean'",
+                      'white'))
+        print(colored("-> Enter 2 for 'Imputing with Median'",
+                      'white'))
+        print(colored("-> Enter 3 for 'Imputing with Mode'",
+                      'white'))
+        print()
+        method = input("Your Choice: ")
         
         if(method == '1'):
             self.mean_impute(feature)
@@ -264,7 +292,7 @@ class MissingValueDealer(Initiator):
         elif(method=='3'):
             self.mode_impute(feature)
         else:
-            print("\nFaulty Choice. Please stick to the instructions.\n")
+            print("Faulty Choice. Please stick to the options provided.")
             self.numeric_impute(feature)
     
     def non_numeric_impute(self, feature):
@@ -302,24 +330,32 @@ class MissingValueDealer(Initiator):
         """
 
         print("Imputation For ", feature, " :")
-
-        method = input("\nChoose method for imputing values :\n"
-                  "-> Enter 1 for 'Statistical Imputation'\n"
-                  "-> Enter 2 for 'Custom Imputation'\n"
-                  "\nYour Choice : "
-                  "\nWarnings :\n"
-                  "[!] 'Statistical Imputation' can be 'Overgeneralized'\n"
-                  "[!] 'Custom Imputation' can be 'Time Consuming'\n")
+        print()
+        print(colored('Choose method for imputing values >',
+                      'red','on_white'))
+        print(colored("-> Enter 1 for 'Statistical Imputation'",
+                      'white'))
+        print(colored("-> Enter 2 for 'Custom Imputation'",
+                      'white'))
+        print()
+        print(colored('Warnings >',
+                      'red','on_white'))
+        print(colored("[!] 'Statistical Imputation' can be 'Overgeneralized'",
+                      'yellow'))
+        print(colored("[!] 'Custom Imputation' can be 'Time Consuming'",
+                      'yellow'))
+        print()
+        method = input("Your Choice: ")
         
         if(method == '1'):
             if(feature in self.__feature_dict['numeric']):
-                print("\nPerforming Numeric Imputation...\n")
+                print("Performing Numeric Imputation...")
                 self.numeric_impute(feature)
             else:
-                print("\nPerforming Non-numeric Imputation...\n")
+                print("Performing Non-numeric Imputation...")
                 self.non_numeric_impute(feature)
         elif(method == '2'):
-            print("\nInitiating Custom Imputation >\n")
+            print("Initiating Custom Imputation...")
             self.custom_impute(feature)
 
     def start_imputation(self):
@@ -328,51 +364,57 @@ class MissingValueDealer(Initiator):
         for col in self.df.columns:
             if(self.df[col].isna().any().any()):
                 self.impute(col)
-
-    def missing_val_message(self):
-        """Does nothing but print a simple message"""
-        
-        print("DEALING WITH MISSING VALUES >\n")
-    
+   
     def choose_option(self):
         """Ask user for their choice of method to deal"""
-
-        self.missing_val_message()
-        choice = input("Choose method to deal with missing values\n"
-                  "-> Enter 1 for 'Removing' rows with atleast one missing"
-                  " value\n"
-                  "-> Enter 2 for 'Imputing' missing values\n"
-                  "-> Enter 3 for 'Removing' columns with more than 60% missing"
-                  " values\n"
-                  "-> Enter 4 for 'Quitting' this action\n"
-                  "\nWARNINGS :\n"
-                  "[!] 'Removing rows' can cause 'Data Loss'\n"
-                  "[!] 'Imputing' missing values can cause 'Data Mutation'\n"
-                  "[!] 'Removing columns' can cause 'Data Loss'\n"
-                  "\nYour Choice : ")
+        
+        self.disp_miss_percent()
+        
+        print(colored('MISSING VALUE HANDLING',
+                      'red','on_white'))
+        print()
+        print(colored('Choose method to deal with missing values >',
+                      'red','on_white'))
+        print(colored("-> Enter 1 for 'Removing' rows with atleast one missing value ",
+                      'white'))
+        print(colored("-> Enter 2 for 'Imputing' missing values",
+                      'white'))
+        print(colored("-> Enter 3 for 'Removing' columns with more than 60% missing values",
+                      'white'))
+        print(colored("-> Enter 4 for 'Quitting' this action",
+                      'white'))
+        print()
+        print(colored("Warnings >", 'red', 'on_white'))
+        print(colored("[!] 'Removing rows' can cause 'Data Loss'",
+                      'yellow'))
+        print(colored("[!] 'Imputing' missing values can cause 'Data Mutation'",
+                      'yellow'))
+        print(colored("[!] 'Removing columns' can cause 'Data Loss'",
+                      'yellow'))
+        print()
+        choice = input("Your Choice: ")
                 
         if(choice=='4'):
-            print("\nACTION PERFORMED: Quitting 'Missing Value Identification'",
-                  "...\n")
+            print("Quitting 'MISSING VALUE HANDLING' as per your request...")
             pass
         elif(choice=='3'):
-            print("\nACTION PERFORMED: Removing 'Columns with more than 60% as",
-                  " missing values'")
+            print("Removing columns with more than 60% as missing values")
             min_non_na = (0.4 * (self.df.shape[0]))
             self.df = self.df.dropna(axis=1, thresh=min_non_na)
-            print("\n> Preview of dataframe after this operation:")
+            print(colored("Preview of dataframe after this operation >",
+                          'red', 'on_white'))
             print(self.df.head().to_markdown())
             print()
             self.choose_option()
         elif(choice=='2'):
-            print("\nACTION PERFORMED: Imputing Missing Values\n")
+            print("Imputing Missing Values as per your request...")
             self.start_imputation()
             self.choose_option()
         else:
-            print("\nACTION PERFORMED: Removing 'Rows with atleast one missing",
-                  " value'\n")
+            print("Removing rows with atleast one missing value")
             self.df = self.df.dropna(how='any', axis=0)
-            print("\n> Preview of dataframe after this operation:")
+            print(colored("Preview of dataframe after this operation >",
+                          'red', 'on_white'))
             print(self.df.head().to_markdown())
             print() 
             self.choose_option()
@@ -385,7 +427,9 @@ class MissingValueDealer(Initiator):
         if(self.missing_exists()):
             self.choose_option()
         else:
-            print("NOTE: There are no missing values in the loaded dataframe.\n")
+            print()
+            print(colored('There are no missing values in the loaded dataframe.', 'green'))
+            print()
             pass
 
 
@@ -416,7 +460,7 @@ class ConsistencyChecker(Initiator):
             feature (str): The name of the feature
         """
 
-        datype = input("Choose data type for " + feature + " :\n")
+        datype = input("Choose data type for " + feature + " : ")
         
         if(datype=='1'):
             self.__type_dict[feature] = 'numeric'
@@ -425,12 +469,15 @@ class ConsistencyChecker(Initiator):
         else:
             print("\nUnknown Option. Re-enter your option.\n")
             self.choose_dtype(feature)
+            
+        print()
     
     def make_dtype_dict(self):
         """Make the data type dictionary for the features of the dataframe"""
 
-        print("Choose datatypes for each feature\n"
-              "-> Enter the best suited data type for a given feature\n"
+        print(colored('Choose datatypes for each of the features >',
+                      'red','on_white'))
+        print("-> Enter the best suited data type for a given feature\n"
               "-> Enter 1 for features that have to be 'numeric'\n"
               "-> Enter 2 for features that have to be 'non-numeric'\n"
               )
@@ -463,12 +510,21 @@ class ConsistencyChecker(Initiator):
 
     def disp_mismatches(self):
         """Displays the mismatches"""
-
-        print("The following features' datatypes do not match with "
-              "the types you have provided with :\n", self.__mismatches)
-        print("\n[!]Only those features that are non-numeric as per the dataset "
-              "but, have to be numeric according to the user are considered "
-              "at this stage.")
+        
+        print(colored("\nOnly those features that are non-numeric as per the dataset "
+                  "but, have to be numeric according to the user are considered "
+                  "at this stage.",
+                      'yellow'))
+        print()
+        
+        if(len(self.__mismatches)!=0):
+            print(colored('There are datatype mismatches!\n',
+                      'white','on_red'))
+            print("The following features' datatypes do not match with "
+                  "the types you have provided with :\n", self.__mismatches)
+        else:
+            print(colored('There are no datatype mismatches!\n',
+                      'white','on_green'))
     
     def make_symbol_list(self, feature):
         """
@@ -576,9 +632,12 @@ class ConsistencyChecker(Initiator):
 
     def establish_consistency(self):
         """Check and establish consistency in the dataframe"""
+        
+        print(colored('MANAGING DATATYPE INCONSISTENCIES',
+                      'red','on_white'))
+        print()
 
-        print("MANAGING DATATYPE INCONSISTENCIES >\n",
-              "-> A datatype inconsistency occurs when columns are stored as ",
+        print("-> A datatype inconsistency occurs when columns are stored as ",
               "datatypes that does not support the user's requirement\n",
               "-> We consider only those features that the user expects to be ",
               "numeric, but are non-numeric in the dataset",
@@ -590,14 +649,18 @@ class ConsistencyChecker(Initiator):
         # choose datatypes
         self.make_dtype_dict()
         
-        # check and display mismatches; display non-numeric symbols
-        print("\nDatatype Inconsistencies :\n")
-        self.check_mismatch()
-        self.disp_mismatches()
-        self.disp_symbols()
-
-        # user options
-        self.rectify_mismatches()
+        if(len(self.__mismatches)!=0):
+            # check and display mismatches; display non-numeric symbols
+            print("\nDatatype Inconsistencies :\n")
+            self.check_mismatch()
+            self.disp_mismatches()
+            self.disp_symbols()
+    
+            # user options
+            self.rectify_mismatches()
+        else:
+            print(colored('There are no datatype mismatches!\n',
+                      'white','on_green'))
 
             
 class DataCleaner(ColumnCleaner, RowCleaner, ValueCleaner, MissingValueDealer,

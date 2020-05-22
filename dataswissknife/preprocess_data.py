@@ -9,6 +9,10 @@ import pandas as pd
 import numpy as np
 from sklearn import preprocessing
 
+from colorama import Fore, Back, Style, init
+from termcolor import colored
+init()
+
 class Essentials:
     """
     Performs essential operations in preprocessing 
@@ -90,19 +94,21 @@ class Essentials:
         elif(len(potential_ids)==1):
             self.X = self.X.drop(potential_ids, axis=1)
             self.df_test = self.df_test.drop(potential_ids, axis=1) 
-            print("The feature",potential_ids[0], "has been removed as it",
-                  "has been recognized as an identifier feature")
+            s = "The feature "+potential_ids[0]+" has been removed as it"+" has been recognized as an identifier feature"
+            print(colored(s, 'green'))
+            print()
         else:
             self.X = self.X.drop(potential_ids, axis=1)
             self.df_test = self.df_test.drop(potential_ids, axis=1)
-            print("The features",','.join(potential_ids), "have been removed",
-                  "as they have been recognized as an identifier feature")
+            s = "The features "+','.join(potential_ids)+" have been removed"+" as they have been recognized as an identifier feature"
+            print(colored(s, 'green'))
+            print()
         
         for feat in above_70:
             print("Do you wish to remove the feature",feat,
                   "as it has a high unique value percentage(greater than 70%) ?",
                   "\nEnter y for yes, else enter anything")
-            ans = input()
+            ans = input("Your Choice: ")
             if(ans=='y'):
                 self.X = self.X.drop([feat], axis=1)
             else:
@@ -145,12 +151,14 @@ class Essentials:
             features (list): Features of the dataframe
         """
         
-        print("\nDECIDING THE TYPES OF FEATURES >\n")
+        print(colored('Decide the types of features >',
+                      'red','on_white'))
         
-        print("NOTE: Answer the following questions with y/n")
+        print("Answer the following questions with y or n")
+        print()
         for feat in (self.X.columns):
             print("Do you wish to encode ",feat," as an ordinal feature?")
-            ans = input()
+            ans = input("Your Choice :")
             if(ans=='y'):
                 self.ordinal.append(feat)
             else:
@@ -187,10 +195,10 @@ class ProcessRatios(Essentials):
         Returns:
             Boolean status
         """
-
+        print()
         print("Do you wish to remove outliers in the feature titled",feat,"?")
-        ans = input("Enter your choice (y or n). Anything else will default to"
-                    " y. ")
+        print("Answer with y or n. Anything else defaults to y.")
+        ans = input("Your Choice: ")
         if(ans=='n'):
             return False
         else:
@@ -259,8 +267,9 @@ class ProcessRatios(Essentials):
         """
         
         print("Do you wish to scale(normalize) the numerical features?")
-        ans = input("Enter your choice (y or n). Anything else will default to"
-                    " y. ")
+        print("Answer with y or n. Anything else deafualts to y.")
+        print()
+        ans = input("Your Choice: ")
         if(ans=='n'):
             return False
         else:
@@ -271,26 +280,30 @@ class ProcessRatios(Essentials):
         Scales ratio features
         """
         
-        print("\nREMOVING OUTLIERS >\n")
+        print(colored('REMOVING OUTLIERS',
+                      'red','on_white'))
+        print()
         
         for feat in self.ratio:
             if(self.to_rem_outliers(feat)):
                 self.outlier_rem(feat)
             else:
-                print("\nNot removing outliers",feat,"as per your request")
+                print("Not removing outliers",feat,"as per your request...")
     
     def ratio_scaling(self):
         """
         Scales ratio features
         """
         
-        print("\nNORMALIZING NUMERICAL FEATURES >\n")
+        print(colored('NORMALIZING NUMERICAL FEATURES',
+                      'red','on_white'))
+        print()
         
         if(self.to_scale()):
             for feat in self.ratio:
                 self.minmaxscale(feat)
         else:
-            print("\nNot scaling features as per your request")
+            print("Not scaling features as per your request...")
        
 
 class ProcessOrdinals(Essentials):
@@ -337,21 +350,25 @@ class ProcessOrdinals(Essentials):
         Encodes ordinal features with a given order
         """
         
-        print("\nORDINAL ENCODING >\n")
-        
-        for feat in self.ordinal:
+        if(len(self.ordinal)!=0):
+            print(colored('ORDINAL ENCODING',
+                          'red','on_white'))
             
-            # find order
-            order = self.take_order(feat)
-            labels = list(range(len(order)))
-            self.order_dict[feat] = dict(zip(order, labels))
-            
-            # label encode train
-            self.X.replace(self.order_dict[feat], inplace=True)
-            
-            # label encode test
-            # Assumption: No new category exists in the test set
-            self.df_test.replace(self.order_dict[feat], inplace=True)
+            for feat in self.ordinal:
+                
+                # find order
+                order = self.take_order(feat)
+                labels = list(range(len(order)))
+                self.order_dict[feat] = dict(zip(order, labels))
+                
+                # label encode train
+                self.X.replace(self.order_dict[feat], inplace=True)
+                
+                # label encode test
+                # Assumption: No new category exists in the test set
+                self.df_test.replace(self.order_dict[feat], inplace=True)
+        else:
+            pass
  
            
 class ProcessNominals(Essentials):
@@ -376,14 +393,18 @@ class ProcessNominals(Essentials):
         One hot encodes the features
         """
         
-        print("\nONE HOT ENCODING NOMINAL FEATURES >\n")
-        
-        # one-hot encode train
-        self.X = pd.get_dummies(self.X, columns=self.nominal)
-        
-        # one-hot encode test
-        # Assumption: No new category exists in the test set
-        self.df_test = pd.get_dummies(self.df_test, columns=self.nominal)
+        if(len(self.nominal)!=0):
+            print(colored('ONE HOT ENCODING NOMINAL FEATURES',
+                          'red','on_white'))
+            
+            # one-hot encode train
+            self.X = pd.get_dummies(self.X, columns=self.nominal)
+            
+            # one-hot encode test
+            # Assumption: No new category exists in the test set
+            self.df_test = pd.get_dummies(self.df_test, columns=self.nominal)
+        else:
+            pass
  
        
 class ProcessIntervals(Essentials):
@@ -416,13 +437,18 @@ class ProcessIntervals(Essentials):
         Mean encodes intervals
         """
         
-        print("\nMEAN ENCODING INTERVALS >\n")
-        
-        for feat in self.interval:
-            # mean-encode train
-            self.X[feat] = self.X[feat].apply(self.mean_interval)
-            # mean-encode test
-            self.df_test[feat] = self.df_test[feat].apply(self.mean_interval)
+        if(len(self.interval)!=0):
+            print(colored('MEAN ENCODING INTERVALS',
+                          'red','on_white'))
+            
+            for feat in self.interval:
+                # mean-encode train
+                self.X[feat] = self.X[feat].apply(self.mean_interval)
+                # mean-encode test
+                self.df_test[feat] = self.df_test[feat].apply(self.mean_interval)
+                
+        else:
+            pass
       
         
 class ProcessTarget(Essentials):
@@ -507,14 +533,20 @@ class PreProcessor(ProcessRatios, ProcessNominals, ProcessOrdinals,
         self.preprocess_data()
         self.make_final_train()
         
-        print("\nPreview of Preprocessed Train Dataset >\n")
+        print(colored("Preview of Preprocessed Train Dataset >",
+                          'red', 'on_white'))
         print(self.final_train.head().to_markdown())
+        print()
         
-        print("\nPreview of Preprocessed Test Dataset >\n")
+        print(colored("Preview of Preprocessed Test Dataset >",
+                          'red', 'on_white'))
         print(self.df_test.head().to_markdown())
+        print()
         
-        print("\nPreview of Preprocessed Test Target Labels >\n")
+        print(colored("Preview of Preprocessed Test Target Labels >",
+                          'red', 'on_white'))
         print(self.test_target.head().to_markdown())
+        print()
         
     def update_feat_lists(self):
         """

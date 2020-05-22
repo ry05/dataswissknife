@@ -137,9 +137,10 @@ except:
 print()
 print(colored('OUTPUTS :', 'white', 'on_green'))
 print(colored('Brief information about the data', 'blue', 'on_white'))
-print("Copy of dataset stored at :", PROJ_RAW_DATA)
-print("Shape of dataset :",df.shape)
-print("Preview of dataset :")
+print("Copy of dataset stored at:", PROJ_RAW_DATA)
+print("Number of rows in the dataset:",df.shape[0])
+print("Number of columns in the dataset:",df.shape[1])
+print("Preview of dataset:")
 print(df.head().to_markdown())
 
 

@@ -19,6 +19,11 @@ from sklearn.model_selection import KFold
 from sklearn.model_selection import StratifiedKFold
 from sklearn.model_selection import cross_validate
 
+from colorama import Fore, Back, Style, init
+from termcolor import colored
+init()
+
+
 
 class Baseline:
     """
@@ -148,8 +153,10 @@ class Baseline:
         
         self.train_it()
         
-        print('Simple Model Accuracies with Cross Validation(K=10):\n')
+        print(colored("Simple Model Accuracies with Cross Validation(K=10) >",
+                          'red', 'on_white'))
         print(self.model_df.head())
+        print()
         
         # provide option for user to choose preferred model
         # use that to train

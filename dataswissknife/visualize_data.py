@@ -153,10 +153,13 @@ class TrainTestCompare(Initiator):
                 
             except:
                 continue
-                
-        print("The following features have cardinalities > 12 and hence have",
-              "not been plotted. You may do so separately.")
-        print(card_overload)
+        
+        if(len(card_overload)!=0):
+            print("The following features have cardinalities > 12 and hence have",
+                  "not been plotted. You may do so separately.")
+            print(card_overload)
+        else:
+            pass
         
 
 class RelWithLabels(Initiator):

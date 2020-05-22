@@ -97,10 +97,12 @@ print("Message Format:\n")
 print("Welcome =>",colored('Welcome Message', 'cyan'))
 print("Operation Headings =>",colored('OPERATION SUBHEADING', 'blue', 'on_white'))
 print("Operation Headings =>",colored('OPERATION HEADING', 'blue', 'on_cyan'))
-print("Error =>",colored('Error Message', 'white', 'on_red'))
+print("Error =>",colored('Error Message', 'red', 'on_white'))
 print("3.",colored("train.csv", 'cyan'),"contains both descriptor and target features")
 print("4.",colored("test.csv", 'cyan'),"contains only descriptor features")
 print("5.",colored("test_solution.csv", 'cyan'),"contains only target features of"
       "",colored("test.csv", 'cyan'))
+print("Positive Thing =>",colored('Good Thing', 'green'))
+print("Warning =>",colored('Warning', 'yellow'))
 
 
