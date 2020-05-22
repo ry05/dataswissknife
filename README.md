@@ -1,6 +1,6 @@
-# dataSwissKnife
+# DataSwissKnife
 
-A Handy Little Tool to aid your Data Science Project
+A Handy Little Tool for your Data Science Operations
 
 ## The Purpose
 
@@ -24,6 +24,12 @@ The dataswissknife is a tool that has been specifically written to help beginner
 
    ```bash
    python dataswissknife/main_code.py
+   ```
+   
+   To avoid warnings being displayed, run with
+   
+   ```bash
+   python -W ignore dataswissknife/main_code.py
    ```
 
 6. The tool should start in your command line. Follow the prompts.
