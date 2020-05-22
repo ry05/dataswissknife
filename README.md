@@ -6,8 +6,6 @@ A Handy Little Tool for your Data Science Operations
    <img src="/img/dsk_logo.png">
 </p>
 
-/github/license/:user/:repo
-
 ## Description
 - What does it do?
 
