@@ -267,7 +267,7 @@ class ProcessRatios(Essentials):
         """
         
         print("Do you wish to scale(normalize) the numerical features?")
-        print("Answer with y or n. Anything else deafualts to y.")
+        print("Answer with y or n. Anything else defaults to y.")
         print()
         ans = input("Your Choice: ")
         if(ans=='n'):
