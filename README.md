@@ -301,7 +301,7 @@ DSK first fits and evaluates on the train.csv file. After it produces the result
 
 
 <p align="center"> 
-   <img src="https://lh3.googleusercontent.com/XFxp9qr3qt1-qxLBB7VrEeCA2zP2dSFHX0LfKilt4jBRGHv3NHFZ1JsHS6MMgmw6fXRjyZOe06IeET7SAMOrwHCa-ev4mtVNUlzwsWn0Llvxjr0F-SYXXW_QnaecuO-qtXHqjMQSF">
+   <img src="https://lh3.googleusercontent.com/XFxp9qr3qt1-qxLBB7VrEeCA2zP2dSFHX0LfKilt4jBRGHv3NHFZ1JsHS6MMgmw6fXRjyZOe06IeET7SAMOrwHCa-ev4mtVNUlzwsWn0Llvxjr0F-SYXXW_QnaecuO-qtXHqjMQS">
 </p>
 
 <p align="center"> 
