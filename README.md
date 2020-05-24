@@ -6,7 +6,6 @@ A Handy Little Tool for your Data Science Operations
    <img src="img/dsk_logo.png">
 </p>
 
-
 ## Description
 *Are you a data science beginner who wishes you had access to a tool that would help you watch data science in action **without writing code**? Or are you someone who understands the importance of data in your business, **but lack the technical grounding to code**? Or are you an expert-level researcher or data scientist who just wishes to do some preliminary analysis or build baseline models **without having to spend time writing code**?* 
 
@@ -28,8 +27,6 @@ Fig. 1 describes how DSK works.
 <p align="center"> 
     Fig 1. DSK Block Diagram
 </p>
-
-
 
 ### Background - Why is this important?
 
@@ -62,13 +59,9 @@ In fig. 2, the different consumers of data science have been broadly categorized
 
 **Main Problem:** Data cleaning, generating preliminary baseline models, creating basic reports etc. becomes time-consuming and rather cumbersome. They will appreciate it if provided with a mechanism to automate these tasks(if not completely, at least partially).
 
-​	
-
 ### The Idea of DSK as a Solution
 
 The gravity of the problem statement at hand calls for a new approach to data science. If data science has to be made simpler and easier for quickly generating essential results(without having to write code), full or partial control has to be transferred from the hands of the user to the system itself. In other words, *the system has to be automated.* Therefore, DSK is an attempt at setting the foundations for a system that will work in automated fashion to help users perform preliminary data science operations without writing code. Currently, DSK is prototypical and will be scaled to a full product in the future iterations of this project.
-
- 
 
 ## Usage 
 ### Instructions to run the tool
@@ -99,8 +92,6 @@ The gravity of the problem statement at hand calls for a new approach to data sc
 
 6. The tool should start in your command line. Follow the prompts.
 
-
-
 ### Explanation of Data Flow through DSK
 
 First, the user **obtains** raw data. This raw data is expected to be in a tabular format and if it is to be used for supervised classification, it should have both descriptors as well as the target feature. The user then **loads** this data onto the DataSwissKnife program. From here, the system-user interaction begins. The first step is for the program to ask the user to **choose a directory** in his or her local system where all the contents and results of the execution of the program will be stored. Once this has been decided, the program **creates a structure** in the user designated directory. After this, the program **starts asking questions** to the user that will be based on what the user wants to do with the data. *For example, the program can ask the user the action he or she would like to take up to deal with missing values in a given feature.*
@@ -112,8 +103,6 @@ The preprocessed data is **passed onto the model** training section. The program
 - Examples of how to use
 - Links to other wholesome explanations
 
-
-
 ### Dissecting DSK's Operation
 
 The aim of this section is to dissect the *DataSwissKnife* system and provide low-level details of how each component works. 
@@ -121,7 +110,9 @@ The aim of this section is to dissect the *DataSwissKnife* system and provide lo
 For the sample depicted here, the train.csv file of the [Titanic dataset](https://www.kaggle.com/c/titanic/data) has been used.
 
 #### Create Structure in the Host’s System
-The first action performed is to create a hierarchical directory structure within the user’s computer system. The user can choose the location where he or she wants to place this project structure (as in fig 3). The *ROOT* name or the name of the project has to be set by the user. ![img](https://lh3.googleusercontent.com/UE3-UcERE1-DHq37bS3kJmHsWtAtXbzWF4WNIX3XoFxOXrFwS0FJau_R-KgX9mnTt09iVHlQrm4W7q_AHfrw9me2oAnRvxon9QXMCoFnRlBE2NrCr2ZJ8zfkHgN7e-7HigQ6YCf_)
+The first action performed is to create a hierarchical directory structure within the user’s computer system. The user can choose the location where he or she wants to place this project structure (as in fig 3). The *ROOT* name or the name of the project has to be set by the user. 
+
+![img](https://lh3.googleusercontent.com/UE3-UcERE1-DHq37bS3kJmHsWtAtXbzWF4WNIX3XoFxOXrFwS0FJau_R-KgX9mnTt09iVHlQrm4W7q_AHfrw9me2oAnRvxon9QXMCoFnRlBE2NrCr2ZJ8zfkHgN7e-7HigQ6YCf_)
 
 <p align="center"> 
     Fig 3. Project Structure in the Host’s System
@@ -286,20 +277,14 @@ The **Report results** block will be implemented as a part of this project’s f
 
 We encourage you to try this out with other datasets and see DSK in action for yourself!
 
-
-
 ## Caveat 
 
 While DSK will help with some very basic operations, we do not make a claim that DSK can replace traditional ways of learning and using data science i.e by writing code. Therefore, if you are a data science aspirant, we strongly urge you to continue learning your concepts and use DSK as a tool to help you generate some quick results.
-
-
 
 ## Support
 DSK is a project that our team has worked on as a part of our final year project in our CSE undergraduate degree. Since we are making an attempt to deal with making data science more accessible and easy for everyone, we would strongly encourage the community's support in making DSK better and more user friendly with every future version.
 
 In case of queries, suggestions or concerns, please feel free to reach me at *yadramshankar@gmail.com*
-
-
 
 ## License
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT) 
