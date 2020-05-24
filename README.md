@@ -112,7 +112,9 @@ For the sample depicted here, the train.csv file of the [Titanic dataset](https:
 #### Create Structure in the Host’s System
 The first action performed is to create a hierarchical directory structure within the user’s computer system. The user can choose the location where he or she wants to place this project structure (as in fig 3). The *ROOT* name or the name of the project has to be set by the user. 
 
-![img](https://lh3.googleusercontent.com/UE3-UcERE1-DHq37bS3kJmHsWtAtXbzWF4WNIX3XoFxOXrFwS0FJau_R-KgX9mnTt09iVHlQrm4W7q_AHfrw9me2oAnRvxon9QXMCoFnRlBE2NrCr2ZJ8zfkHgN7e-7HigQ6YCf_)
+<p align="center"> 
+   <img src="https://lh3.googleusercontent.com/UE3-UcERE1-DHq37bS3kJmHsWtAtXbzWF4WNIX3XoFxOXrFwS0FJau_R-KgX9mnTt09iVHlQrm4W7q_AHfrw9me2oAnRvxon9QXMCoFnRlBE2NrCr2ZJ8zfkHgN7e-7HigQ6YCf_">
+</p>
 
 <p align="center"> 
     Fig 3. Project Structure in the Host’s System
