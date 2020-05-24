@@ -135,7 +135,7 @@ class Essentials:
         """
 
         print("Is the feature titled ",feat," an interval feature?")
-        ans = input()
+        ans = input("Your Choice :")
         if(ans=='y'):
             separator = input("Enter the character used as separator: ")
             self.interval_sep = separator
@@ -267,7 +267,7 @@ class ProcessRatios(Essentials):
         """
         
         print("Do you wish to scale(normalize) the numerical features?")
-        print("Answer with y or n. Anything else deafualts to y.")
+        print("Answer with y or n. Anything else defaults to y.")
         print()
         ans = input("Your Choice: ")
         if(ans=='n'):
