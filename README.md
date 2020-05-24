@@ -38,7 +38,7 @@ There is no doubt that data science is one field that has recently seen a surge 
 In fig. 2, the different consumers of data science have been broadly categorized. 
 
 <p align="center"> 
-   <img src="img/data_science_consumers.jpg">
+   <img src="img/data_science_consumers.JPG">
 </p>
 
 <p align="center"> 
