@@ -124,13 +124,17 @@ The subdirectories are data, visualizations, models and reports. The *data* subd
 *Visualizations* contain the auto-generated visualizations from data and models has the machine learning models as .pkl files. Finally, *reports* will contain basic, preliminary reports of the data and analysis performed.
 The importance of this step is that it makes the results reproducible. This means that the user can access cleaned and preprocessed intermediaries of the dataset, visualizations and basic models at a later stage without having to run this whole program again. 
 
-![img](https://lh3.googleusercontent.com/I8-oa_yDuJPaBC4gTXwaheq7e1x7YaJx33Fi2-i_mHxiQVHA4LwiWaArC2HOWAsYGB8nTp-9lVKIFhpXw83_c041y9zZEn4v7VhBPX2BB9nUa3w_T1zPpXaVezeoQva2HQZuBtFo)
+<p align="center"> 
+   <img src="https://lh3.googleusercontent.com/I8-oa_yDuJPaBC4gTXwaheq7e1x7YaJx33Fi2-i_mHxiQVHA4LwiWaArC2HOWAsYGB8nTp-9lVKIFhpXw83_c041y9zZEn4v7VhBPX2BB9nUa3w_T1zPpXaVezeoQva2HQZuBtFo">
+</p>
 
 <p align="center"> 
     Fig 4. Choosing the location to place the project directory
 </p> 
 
-![img](https://lh6.googleusercontent.com/hQtVpAn7on9lDy1kpXd2br72k-tQ-DtojvkxW5Po-wFdhHnjFhl7dRyG7ohsjInuYFkZWuXIoskLMXirBAtPK8SF9SCMnxz8CQxsFncXuiH4zIeGRYa-Z76XpJErX6GJFEgkXg8o)
+<p align="center"> 
+   <img src="https://lh6.googleusercontent.com/hQtVpAn7on9lDy1kpXd2br72k-tQ-DtojvkxW5Po-wFdhHnjFhl7dRyG7ohsjInuYFkZWuXIoskLMXirBAtPK8SF9SCMnxz8CQxsFncXuiH4zIeGRYa-Z76XpJErX6GJFEgkXg8o">
+</p>
 
 <p align="center"> 
     Fig 5. Naming the project directory; The project directory is created in the system and the path is provided
@@ -139,13 +143,17 @@ The importance of this step is that it makes the results reproducible. This mean
 #### Load Data
 After the project structure has been made, the next step is to load the data. As of its first version, DataSwissKnife only supports .csv files. It is expected that the user already has the dataset in his local system. When this dataset is loaded onto the project through DataSwissKnife(DSK), a copy of this is stored in *root/data/raw.*
 
-![img](https://lh5.googleusercontent.com/nDtxYf9-R7jCoZS1A4ACkYOmEm52Aem-EmvXxGxl5SB5iTWULyDRwewpFty6SlZaldm7HTuXHnpmpXBF4GkGVarCMDjcJzHSOD9AXPI7G6fvieSydLIzLLkz1VtiAS5Unqo0nNlV)
+<p align="center"> 
+   <img src="https://lh5.googleusercontent.com/nDtxYf9-R7jCoZS1A4ACkYOmEm52Aem-EmvXxGxl5SB5iTWULyDRwewpFty6SlZaldm7HTuXHnpmpXBF4GkGVarCMDjcJzHSOD9AXPI7G6fvieSydLIzLLkz1VtiAS5Unqo0nNlV">
+</p>
 
 <p align="center"> 
     Fig 6. Choosing the dataset from the user's local system
 </p> 
 
-![img](https://lh6.googleusercontent.com/urBczB1F2-0qwMd1mFzavrE4QuA0RduXjNreV3VUmSxBenXNq-Rvy41mYxRqfPDIcSqCKZ9Wcfq7hM0MQrgc6IIvm4tkHeS-bIqqVnoaqZhnm5DnVSVQAGkTJW3fJ4dpLdFYg6by)
+<p align="center"> 
+   <img src="https://lh6.googleusercontent.com/urBczB1F2-0qwMd1mFzavrE4QuA0RduXjNreV3VUmSxBenXNq-Rvy41mYxRqfPDIcSqCKZ9Wcfq7hM0MQrgc6IIvm4tkHeS-bIqqVnoaqZhnm5DnVSVQAGkTJW3fJ4dpLdFYg6by">
+</p>
 
 <p align="center"> 
     Fig 7. Output after loading and renaming the dataset; a preview is generated
@@ -164,31 +172,41 @@ This block is concerned with cleaning up the data. A series of questions are ask
 
 The other cleaning steps are dealing with missing values and consistency checkers. DSK asks questions to the user, which have one word answers. Based on user responses, cleaning is performed.
 
-![img](https://lh5.googleusercontent.com/644QhW3eTM4hO52vEg9MsSjdKkBo7bSw0OXWs1c_OVIEpQoWBW8Nwpy9zo3iBpziByDXI3z8LGkFuJO2MWummAcn4tRP7fooSAiGTVVsf9wkjHI-Uy3eT3zIzm_ydplZCPyCV5Ue)
+<p align="center"> 
+   <img src="https://lh5.googleusercontent.com/644QhW3eTM4hO52vEg9MsSjdKkBo7bSw0OXWs1c_OVIEpQoWBW8Nwpy9zo3iBpziByDXI3z8LGkFuJO2MWummAcn4tRP7fooSAiGTVVsf9wkjHI-Uy3eT3zIzm_ydplZCPyCV5Ue">
+</p>
 
 <p align="center"> 
     Fig 8. The initiation of Data Cleaning
 </p> 
 
-![img](https://lh4.googleusercontent.com/9C8BgfyY-2iAJOPqQv8VBrXlr2iTPn1unH-0wFIzpgkcZguxbDbHmdnocee9e6fPcepa3p62EPuxcO18_hV0TwIjRBRmS_ebFVHfe__AIfUSG_-Obci0GRABQkx96zGqyoi_A3zB)
+<p align="center"> 
+   <img src="https://lh4.googleusercontent.com/9C8BgfyY-2iAJOPqQv8VBrXlr2iTPn1unH-0wFIzpgkcZguxbDbHmdnocee9e6fPcepa3p62EPuxcO18_hV0TwIjRBRmS_ebFVHfe__AIfUSG_-Obci0GRABQkx96zGqyoi_A3zB">
+</p>
 
 <p align="center"> 
     Fig 9. Missing value percentages in the data
 </p> 
 
-![img](https://lh6.googleusercontent.com/azEAhx--cnvQ8eU_Y8SXNvf2ctNHZULlTyHkBvkvKjUmajILGi8pVRClmBQWk5kZWF-H-jdfeoMfKjZXFKRM0eQnWbCucMGZ2n9JdphD7Hbir3FpeuQ46NGS-dS5uackBycn8iJ7)
+<p align="center"> 
+   <img src="https://lh6.googleusercontent.com/azEAhx--cnvQ8eU_Y8SXNvf2ctNHZULlTyHkBvkvKjUmajILGi8pVRClmBQWk5kZWF-H-jdfeoMfKjZXFKRM0eQnWbCucMGZ2n9JdphD7Hbir3FpeuQ46NGS-dS5uackBycn8iJ7">
+</p>
 
 <p align="center"> 
     Fig 10. Missing value percentages in the data after removing features with more than 60% as missing values
 </p> 
 
-![img](https://lh4.googleusercontent.com/U-eDRdzZU5EIzSBxtsvN7hCq5Xj1UhxDvZbEF78cTXBLCIl6HK7QZuHeeri1Gh4-hzDtjcYK0nE2AtNij5Fpr2TK2oToB-RG81ui5ukRmT58f6_99Of0W36xPTxVfLl7CDjC66ir) 
+<p align="center"> 
+   <img src="https://lh4.googleusercontent.com/U-eDRdzZU5EIzSBxtsvN7hCq5Xj1UhxDvZbEF78cTXBLCIl6HK7QZuHeeri1Gh4-hzDtjcYK0nE2AtNij5Fpr2TK2oToB-RG81ui5ukRmT58f6_99Of0W36xPTxVfLl7CDjC66ir">
+</p>
 
 <p align="center"> 
     Fig 11. Performing imputation to fill in the remaining missing values
 </p> 
 
-![img](https://lh4.googleusercontent.com/bZNeCg7ci0Aa_MFEmRdqh41p5E7YxTvhUB4HWNTU2HNvDSMxgXCodRnJS_KvnUP0c5S_gv1zbcfFEeuYMyurBiCMP03x5uE7RZtp5aZuStHdpJkRm20LxqhbZMl2WhQ35mhfvJjT)
+<p align="center"> 
+   <img src="https://lh4.googleusercontent.com/bZNeCg7ci0Aa_MFEmRdqh41p5E7YxTvhUB4HWNTU2HNvDSMxgXCodRnJS_KvnUP0c5S_gv1zbcfFEeuYMyurBiCMP03x5uE7RZtp5aZuStHdpJkRm20LxqhbZMl2WhQ35mhfvJjT">
+</p>
 
 <p align="center"> 
     Fig 12. All missing values have been dealt with
@@ -196,7 +214,9 @@ The other cleaning steps are dealing with missing values and consistency checker
 
 Another step of data cleaning is to check for datatype inconsistencies. A data type inconsistency occurs when a feature is in a datatype that does not facilitate analysis that the user would like to do. An example of this is when a feature like money is encoded as a non-numeric type(i.e object in pandas) because of entries like “50\$”. In such a case, DSK’s datatype inconsistency dealer module will first identify these inconsistencies based on the user’s responses to how he or she would prefer a feature to be (numeric or non-numeric) and checks these against the actual types with which these features have been encoded. After identifying inconsistent features, DSK flags off non-numeric characters. In our example of money, “​\$” is a non-numeric character. DSK flags this off and provides the user with an opportunity to remove these values from the data. After removing “$” symbols, we can see that our money feature can now be converted into numeric type easily. If there are no inconsistencies, then that too is informed to the user (fig 13).
 
-![img](https://lh6.googleusercontent.com/Tm4-ivTjG57Qj01II3QPtdT1b3L-3psk8VRGNJzhFDdsW_Ql2Kn3YLktL5xa1zPehUTlblGraoJz_hubCG60g0VIPZhj8k0DwlkkqYpjjXWQ8nGI5A3_EK0QPI_4PAjafsM8mpxH)
+<p align="center"> 
+   <img src="https://lh6.googleusercontent.com/Tm4-ivTjG57Qj01II3QPtdT1b3L-3psk8VRGNJzhFDdsW_Ql2Kn3YLktL5xa1zPehUTlblGraoJz_hubCG60g0VIPZhj8k0DwlkkqYpjjXWQ8nGI5A3_EK0QPI_4PAjafsM8mpxH">
+</p>
 
 <p align="center"> 
     Fig 13. Datatype consistency management
@@ -209,7 +229,9 @@ Data preprocessing concerns itself with converting clean data into a format more
 
 Initially, these 3 files are stored in *root/data/clean*. But after all preprocessing steps, the preprocessed versions of these 3 files are stored in *root/data/processed*. 
 
-![img](https://lh4.googleusercontent.com/qNWZV73LJJTLShq7eXZrvsq0oADoe45mHXwq8o1I1Kobv5LpoclNpdFwjEIHpjcOgjEQbLGqf-qXKj5aMDxnW84EgHu46FcC_wAPHJcn6-J61ayldLYXvUU6E2k9vro367ie28_u)
+<p align="center"> 
+   <img src="https://lh4.googleusercontent.com/qNWZV73LJJTLShq7eXZrvsq0oADoe45mHXwq8o1I1Kobv5LpoclNpdFwjEIHpjcOgjEQbLGqf-qXKj5aMDxnW84EgHu46FcC_wAPHJcn6-J61ayldLYXvUU6E2k9vro367ie28_u">
+</p>
 
 <p align="center"> 
     Fig 14. Prompts to enter the target
@@ -228,7 +250,9 @@ Steps performed are
         * Else, feature is **interval**
     * Else, feature is **ordinal**
 
-![img](https://lh3.googleusercontent.com/FpIquAS3sFIOOV0PfimNolKytNVDf6QqN9afZgk0M3pqCWNFHnvss9bKlEu7uL53xGw8YYWsT4PrrYyft-Ez53_6NQhiSDjaKzo5mfhGJU47s3RXQxm_7pkwdsapcGo81ZiDkBJk)
+<p align="center"> 
+   <img src="https://lh3.googleusercontent.com/FpIquAS3sFIOOV0PfimNolKytNVDf6QqN9afZgk0M3pqCWNFHnvss9bKlEu7uL53xGw8YYWsT4PrrYyft-Ez53_6NQhiSDjaKzo5mfhGJU47s3RXQxm_7pkwdsapcGo81ZiDkBJk">
+</p>
 
 <p align="center"> 
     Fig 15. Interact with the user to choose feature types
@@ -236,7 +260,9 @@ Steps performed are
 
 Interact with user to identify the features from which the user will like to remove outliersNormalize features as per user’s requirement. Currently, only one-hot encoding is performed for nominal features. Label encoding will be performed only for ordinal features(if any)
 
-![img](https://lh5.googleusercontent.com/YFc-oBKbwMaTlosUIYcVXc-Mwtj3o9F7fgRVNjnPHqUQoNOq96vQV4APdxJ5NvglrF-3120FsPdFuy--E_eIOKU19fn3Aqs9FV3h_uS4OCFd83DyYL4dTekJiKhDh1e6oIolLPrp)
+<p align="center"> 
+   <img src="https://lh5.googleusercontent.com/YFc-oBKbwMaTlosUIYcVXc-Mwtj3o9F7fgRVNjnPHqUQoNOq96vQV4APdxJ5NvglrF-3120FsPdFuy--E_eIOKU19fn3Aqs9FV3h_uS4OCFd83DyYL4dTekJiKhDh1e6oIolLPrp">
+</p>
 
 <p align="center"> 
     Fig 16. Other preprocessing steps with the help of user input
@@ -246,13 +272,17 @@ Interact with user to identify the features from which the user will like to rem
 
 DSK auto-generates visualizations based on the data it has. Currently, only density plots, box plots and count/frequency plots are generated.
 
-![img](https://lh5.googleusercontent.com/vAX2zY3RNHqKfKRdqdMKniLJlt-vQ1_a4SN3JFni_qxVSUibG80wcq8xxvOw8nNdd1wD2ZXETbHCKWWW5JeNJDLX2uPi6sqP2E7PqsDQTCKJBvl0_SH3NPNLFsZKRag87R7E4nHd)
+<p align="center"> 
+   <img src="https://lh5.googleusercontent.com/vAX2zY3RNHqKfKRdqdMKniLJlt-vQ1_a4SN3JFni_qxVSUibG80wcq8xxvOw8nNdd1wD2ZXETbHCKWWW5JeNJDLX2uPi6sqP2E7PqsDQTCKJBvl0_SH3NPNLFsZKRag87R7E4nHd">
+</p>
 
 <p align="center"> 
     Fig 17. Data visualization
 </p> 
 
-![img](https://lh4.googleusercontent.com/9JbtTTgTTCH5rDOxWD5Dfj63eoC4Y5DmVsAucYuUBAfbQClvxDqNwNd5bjS7mFDfnJ8C3o8HoxVDmG0jWWqElTT-tVgGeN9AsMC8sek971AN4aBF9C_6aGmEwI_AJ357tD9-beBF)
+<p align="center"> 
+   <img src="https://lh4.googleusercontent.com/9JbtTTgTTCH5rDOxWD5Dfj63eoC4Y5DmVsAucYuUBAfbQClvxDqNwNd5bjS7mFDfnJ8C3o8HoxVDmG0jWWqElTT-tVgGeN9AsMC8sek971AN4aBF9C_6aGmEwI_AJ357tD9-beBF">
+</p>
 
 <p align="center"> 
     Fig 18. Auto-generated plots
@@ -269,7 +299,10 @@ DSK performs supervised classification. It takes the pre-processed datasets and 
 
 DSK first fits and evaluates on the train.csv file. After it produces the results for the same, the user is provided an option to choose which model he or she would like to store and use on the test.csv file. Based on the user’s choice, a particular model estimator is saved in *root/models*.
 
-![img](https://lh3.googleusercontent.com/XFxp9qr3qt1-qxLBB7VrEeCA2zP2dSFHX0LfKilt4jBRGHv3NHFZ1JsHS6MMgmw6fXRjyZOe06IeET7SAMOrwHCa-ev4mtVNUlzwsWn0Llvxjr0F-SYXXW_QnaecuO-qtXHqjMQS)
+
+<p align="center"> 
+   <img src="https://lh3.googleusercontent.com/XFxp9qr3qt1-qxLBB7VrEeCA2zP2dSFHX0LfKilt4jBRGHv3NHFZ1JsHS6MMgmw6fXRjyZOe06IeET7SAMOrwHCa-ev4mtVNUlzwsWn0Llvxjr0F-SYXXW_QnaecuO-qtXHqjMQSF">
+</p>
 
 <p align="center"> 
     Fig 19. Baseline model results
