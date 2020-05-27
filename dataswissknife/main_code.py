@@ -249,9 +249,9 @@ print(r"""
 """)
 
 # make them dataframes
-train = pd.read_csv(os.path.join(PROJ_PROCESSED_DATA,"train.csv"))
-test = pd.read_csv(os.path.join(PROJ_PROCESSED_DATA,"test.csv"))
-test_solution = pd.read_csv(os.path.join(PROJ_PROCESSED_DATA,"test_solution.csv"))
+train = pd.read_csv(os.path.join(PROJ_CLEAN_DATA,"train.csv"))
+test = pd.read_csv(os.path.join(PROJ_CLEAN_DATA,"test.csv"))
+test_solution = pd.read_csv(os.path.join(PROJ_CLEAN_DATA,"test_solution.csv"))
 
 # use the visualizer class from visualize_data.py
 viz = vd.FinalPlotter(train, test, target, pp.give_feat_list(), PROJ_VIZ)

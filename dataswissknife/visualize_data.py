@@ -197,7 +197,10 @@ class RelWithLabels(Initiator):
             
     
 class FinalPlotter(TrainTestCompare, RelWithLabels):
-    """Final class to generate the plots"""
+    """
+    Final class to generate the plots
+    [All data used are preprocessed data]
+    """
     
     def __init__(self, train_df, test_df, target, feature_list, output_loc):
         """
