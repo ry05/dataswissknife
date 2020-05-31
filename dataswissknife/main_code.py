@@ -1,7 +1,18 @@
 # -*- coding: utf-8 -*-
 """
-Main Code File for ADSAML
+Main Code File for DataSwissKnife
 
+CHANGES TO BE MADE
+------------------
+1. Add Authors on the README
+2. Learn how to maintain a change log and maintain one for DSK
+3. Structure the questions asked
+    > Example: Your Choice[Y/N]
+    > Default option appears first
+    > Write this when you start the program
+    > Give users an idea of what to expect
+4. Use tqdm to depict progress for data viz. and operations that require long 
+   waits
 """
 
 import pandas as pd
@@ -56,10 +67,12 @@ print(colored('INSTRUCTIONS :', 'white', 'on_blue'))
 print("1. Choose a directory in your system in which you want the project structure to be built\n"
       "2. Enter the name of your project's root directory\n")
 
+print("Please wait a moment while the 'Choose Folder' dialog opens...\n")
+
 # Choose the folder
-window = tk.Tk()
-window.title("Choose the directory")
-window.withdraw()
+dir_window = tk.Tk()
+dir_window.title("Choose the directory")
+dir_window.withdraw()
 main_dir = filedialog.askdirectory()
 
 # Make root
@@ -117,10 +130,12 @@ print(colored('INSTRUCTIONS :', 'white', 'on_blue'))
 print("1. Choose the .csv dataset from your system\n"
       "2. Rename your dataset\n")
 
+print("Please wait a moment while the 'Choose Dataset' dialog opens...\n")
+
 # Load the Dataset
-window = tk.Tk()
-window.title("Choose the dataset to load")
-window.withdraw()
+data_window = tk.Tk()
+data_window.title("Choose the dataset to load")
+data_window.withdraw()
 dataset_path = filedialog.askopenfilename()
 
 # Convert to Dataframe
@@ -162,7 +177,7 @@ df = pd.read_csv(raw_data_path)
 # clean_data.py in action
 dc = cd.DataCleaner(df)
 dc.clean_df()
-print("> Preview of cleaned dataset :")
+print("Preview of cleaned dataset :")
 print(dc.df.head().to_markdown())
 
 # store cleaned dataset
@@ -173,6 +188,14 @@ dc.df.to_csv(clean_data_path, index=False)
 print()
 print(colored('OUTPUTS :', 'white', 'on_green'))
 print("The cleaned data has been loaded in", clean_data_path)
+
+# does the user wish to continue?
+print(colored('\nDo you wish to continue to Data Preprocessing?', 'green'))
+ch = input("Enter your choice[Y/N]: ")
+if(ch.upper()=='N'):
+    print("\nTerminating DataSwissKnife as per your request.\n"
+          "Project Stored at",PROJ_ROOT)
+    sys.exit(0)
 
 
 #-----Preprocessing the dataset-----#
@@ -237,6 +260,14 @@ print("4.",colored("test.csv", 'cyan'),"contains only descriptor features")
 print("5.",colored("test_solution.csv", 'cyan'),"contains only target features of"
       "",colored("test.csv", 'cyan'))
 
+# does the user wish to continue?
+print(colored('\nDo you wish to continue to auto-generating Data Visualizations?', 'green'))
+ch = input("Enter your choice[Y/N]: ")
+if(ch.upper()=='N'):
+    print("\nTerminating DataSwissKnife as per your request.\n"
+          "Project Stored at",PROJ_ROOT)
+    sys.exit(0)
+
 
 #-----Auto-generating Visualizations-----#
        
@@ -262,7 +293,15 @@ print()
 print(colored('OUTPUTS :', 'white', 'on_green'))
 print("The auto-generated visualizations are stored in", PROJ_VIZ)
 
-
+# does the user wish to continue?
+print(colored('\nDo you wish to continue to Modelling?', 'green'))
+ch = input("Enter your choice[Y/N]: ")
+if(ch.upper()=='N'):
+    print("\nTerminating DataSwissKnife as per your request.\n"
+          "Project Stored at",PROJ_ROOT)
+    sys.exit(0)
+    
+    
 #-----Modelling Data-----#
  
 print(r""" 
@@ -285,5 +324,7 @@ print()
 print(colored('OUTPUTS :', 'white', 'on_green'))
 print("Your preffered model has been stored at",
       os.path.join(PROJ_MODELS,'model.pkl'))
+print()
+print("\nProject Stored at",PROJ_ROOT)
 
 """The End"""
