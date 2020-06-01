@@ -9,6 +9,7 @@ import pandas as pd
 import numpy as np
 from sklearn import preprocessing
 
+import sys
 from colorama import Fore, Back, Style, init
 from termcolor import colored
 init()
@@ -16,12 +17,6 @@ init()
 class Essentials:
     """
     Performs essential operations in preprocessing 
-    > Works on the dataframe only
-    > Will be most necessary for the preprocessing stage
-
-      1. Split up the cleaned dataframe into X(descriptors) and y(target)
-      2. X and y are to be independently processed
-      3. y will only adhere to one kind of preprocessing : Label Encoding (if required)
     """
     
     df = None             # train dataframe
@@ -108,7 +103,8 @@ class Essentials:
             print("Do you wish to remove the feature",feat,
                   "as it has a high unique value percentage(greater than 70%) ?",
                   "\nEnter y for yes, else enter anything")
-            ans = input("Your Choice: ")
+            ans = input("Your Choice[Y/N]: ")
+            ans = ans.lower()
             if(ans=='y'):
                 self.X = self.X.drop([feat], axis=1)
             else:
@@ -135,7 +131,8 @@ class Essentials:
         """
 
         print("Is the feature titled ",feat," an interval feature?")
-        ans = input("Your Choice :")
+        ans = input("Your Choice[Y/N]: ")
+        ans = ans.lower()
         if(ans=='y'):
             separator = input("Enter the character used as separator: ")
             self.interval_sep = separator
@@ -158,7 +155,8 @@ class Essentials:
         print()
         for feat in (self.X.columns):
             print("Do you wish to encode ",feat," as an ordinal feature?")
-            ans = input("Your Choice :")
+            ans = input("Your Choice[Y/N]: ")
+            ans = ans.lower()
             if(ans=='y'):
                 self.ordinal.append(feat)
             else:
@@ -197,8 +195,8 @@ class ProcessRatios(Essentials):
         """
         print()
         print("Do you wish to remove outliers in the feature titled",feat,"?")
-        print("Answer with y or n. Anything else defaults to y.")
-        ans = input("Your Choice: ")
+        ans = input("Your Choice[Y/N]: ")
+        ans = ans.lower()
         if(ans=='n'):
             return False
         else:
@@ -267,9 +265,9 @@ class ProcessRatios(Essentials):
         """
         
         print("Do you wish to scale(normalize) the numerical features?")
-        print("Answer with y or n. Anything else defaults to y.")
         print()
-        ans = input("Your Choice: ")
+        ans = input("Your Choice[Y/N]: ")
+        ans = ans.lower()
         if(ans=='n'):
             return False
         else:
@@ -484,9 +482,10 @@ class ProcessTarget(Essentials):
             self.y[self.target] = le.transform(self.y[self.target])
             
         except:
-            # hope code never enters in here
+            # hope the program never enters in here
             print("TEST TARGET HAS CLASSES NOT SEEN IN TRAIN DATA...\n",
                   "Currently, there is no support for this")
+            sys.exit(0)
             pass
 
 class PreProcessor(ProcessRatios, ProcessNominals, ProcessOrdinals,

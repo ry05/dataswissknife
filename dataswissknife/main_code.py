@@ -76,7 +76,9 @@ dir_window.withdraw()
 main_dir = filedialog.askdirectory()
 
 # Make root
-root_name = input("Enter the name of your project's root directory :")
+root_name = input("Enter the name of your project's root directory[root]: ")
+if(root_name==''):
+    root_name="root"
 root_path = os.path.join(main_dir, root_name)
 os.mkdir(root_path)
 
@@ -142,11 +144,15 @@ dataset_path = filedialog.askopenfilename()
 try:
     df = pd.read_csv(dataset_path)
     DATASET_NAME = input("Rename this data file(You don't need to specify "
-                        "a .csv extension; no spaces allowed.) :")
+                        "a .csv extension; no spaces allowed.)[data]: ")
+    if(DATASET_NAME==''):
+        DATASET_NAME = "data"
     raw_data_path = os.path.join(PROJ_RAW_DATA, (DATASET_NAME+".csv"))
     df.to_csv(raw_data_path, index=False)
 except:
-    print("Error creating dataframe\n")
+    print("Error creating dataframe. This program is self-terminating.\n"
+          "Re-run it from beginning, be sure to load only a .csv file.")
+    sys.exit(0)
     
 # outputs
 print()
@@ -169,7 +175,7 @@ print(r"""
  Clean the dataset and rid it of values that affect its credibility
 """)
 print(colored('INSTRUCTIONS :', 'white', 'on_blue'))
-print("1. Answer the questions asked by the system to clean up the data\n")
+print("1. Answer the following questions to clean up the data\n")
 
 raw_data_path = os.path.join(PROJ_RAW_DATA, (DATASET_NAME+".csv"))
 df = pd.read_csv(raw_data_path)
@@ -215,9 +221,10 @@ df = pd.read_csv(clean_data_path)
 # take in the target feature
 print("The following features are present in your cleaned dataset: ")
 print(list(df.columns))
+print()
 print("Which feature do you want to be the target feature? If you have no"
       " target feature, enter 'None'")
-target = input("Enter Target Feature:")
+target = input("Enter Target Feature: ")
 
 # split into train and test data (20% test)
 if(target!='None'):
@@ -244,11 +251,16 @@ if(target!='None'):
     preproc_test_tar.to_csv((os.path.join(PROJ_PROCESSED_DATA,"test_solution.csv")),
                          index=False)
        
-else:
+elif(target=='None'):
     print("No target feature specified. So, no preprocessing performed.\n")
     train = pd.read_csv(clean_data_path)
     # no need to go into preprocessing if there is no target
     pass
+
+else:
+    print("Not a recognized value. This program is self-terminating.\n"
+          "Progress so far is stored in",PROJ_ROOT,
+          "It is recommended to re-run from beginning")
    
 # outputs
 print()
@@ -325,6 +337,6 @@ print(colored('OUTPUTS :', 'white', 'on_green'))
 print("Your preffered model has been stored at",
       os.path.join(PROJ_MODELS,'model.pkl'))
 print()
-print("\nProject Stored at",PROJ_ROOT)
+print("Project Stored at",PROJ_ROOT)
 
 """The End"""

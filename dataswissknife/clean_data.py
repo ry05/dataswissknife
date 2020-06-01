@@ -283,17 +283,18 @@ class MissingValueDealer(Initiator):
         print(colored("-> Enter 3 for 'Imputing with Mode'",
                       'white'))
         print()
-        method = input("Your Choice: ")
+        method = input("Your Choice[1/2/3]: ")
         
-        if(method == '1'):
+        if(method==''):
+            method = '1'
+            print("Default option, Mean Imputation triggered.")
+    
+        if(method=='1'):
             self.mean_impute(feature)
         elif(method=='2'):
             self.median_impute(feature)
         elif(method=='3'):
             self.mode_impute(feature)
-        else:
-            print("Faulty Choice. Please stick to the options provided.")
-            self.numeric_impute(feature)
     
     def non_numeric_impute(self, feature):
         """
@@ -315,9 +316,9 @@ class MissingValueDealer(Initiator):
         """
 
         if(feature in self.__feature_dict['numeric']):
-            value = float(input("Enter Value(Numeric) to Impute with :"))
+            value = float(input("Enter Value(Numeric) to Impute with: "))
         else:
-            value = input("Enter Value(Non-numeric) to Impute with :")
+            value = input("Enter Value(Non-numeric) to Impute with: ")
 
         self.df[feature].fillna(value, inplace=True)
     
@@ -345,16 +346,20 @@ class MissingValueDealer(Initiator):
         print(colored("[!] 'Custom Imputation' can be 'Time Consuming'",
                       'yellow'))
         print()
-        method = input("Your Choice: ")
+        method = input("Your Choice[1/2]: ")
         
-        if(method == '1'):
+        if(method==''):
+            method = '1'
+            print("Default option, Statistical Imputation triggered.")
+        
+        if(method=='1'):
             if(feature in self.__feature_dict['numeric']):
                 print("Performing Numeric Imputation...")
                 self.numeric_impute(feature)
             else:
                 print("Performing Non-numeric Imputation...")
                 self.non_numeric_impute(feature)
-        elif(method == '2'):
+        elif(method=='2'):
             print("Initiating Custom Imputation...")
             self.custom_impute(feature)
 
@@ -392,7 +397,12 @@ class MissingValueDealer(Initiator):
         print(colored("[!] 'Removing columns' can cause 'Data Loss'",
                       'yellow'))
         print()
-        choice = input("Your Choice: ")
+        choice = input("Your Choice[1/2/3/4]: ")
+        
+        if(choice==''):
+            choice = '1'
+            print("Default option, Removing rows with atleast one missing value "
+                  "triggered.")
                 
         if(choice=='4'):
             print("Quitting 'MISSING VALUE HANDLING' as per your request...")
@@ -436,7 +446,8 @@ class MissingValueDealer(Initiator):
 class ConsistencyChecker(Initiator):
     """Checks for and rectifies consistency-based issues with data"""
 
-    __type_dict = {}   # datatype dictionary
+    __type_dict = {}   # user defined datatype dictionary
+    __non_numeric_features = []
     __mismatches = []  # features that have a type mismatch (only false non-num)
     __symbol_list = [] # list of non-numeric symbols
     __symbol_dict = {} # non-numeric symbols dictionary
@@ -450,6 +461,16 @@ class ConsistencyChecker(Initiator):
         """
         
         super(ConsistencyChecker, self).__init__(dataframe)
+        
+    def find_non_numerics(self):
+        """Find non-numeric features"""
+        
+        for col in self.df.columns:
+            datype = str(self.df[col].dtype)
+            if(('int' in datype) or ('float' in datype)):
+                pass
+            else:
+                self.__non_numeric_features.append(col)
 
     def choose_dtype(self, feature):
         """
@@ -460,12 +481,16 @@ class ConsistencyChecker(Initiator):
             feature (str): The name of the feature
         """
 
-        datype = input("Choose data type for " + feature + " : ")
+        datype = input("Choose data type for " + feature + "[1/2]: ")
+        
+        if(datype==''):
+            datype = '1'
+            print("Assigned to Numeric type by Default.")
         
         if(datype=='1'):
-            self.__type_dict[feature] = 'numeric'
-        elif(datype=='2'):
             self.__type_dict[feature] = 'non-numeric'
+        elif(datype=='2'):
+            self.__type_dict[feature] = 'numeric'
         else:
             print("\nUnknown Option. Re-enter your option.\n")
             self.choose_dtype(feature)
@@ -474,14 +499,15 @@ class ConsistencyChecker(Initiator):
     
     def make_dtype_dict(self):
         """Make the data type dictionary for the features of the dataframe"""
-
+        
+        print()
         print(colored('Choose datatypes for each of the features >',
                       'red','on_white'))
         print("-> Enter the best suited data type for a given feature\n"
-              "-> Enter 1 for features that have to be 'numeric'\n"
-              "-> Enter 2 for features that have to be 'non-numeric'\n"
+              "-> Enter 1 for features that are better of 'Non-numeric'\n"
+              "-> Enter 2 for features that are better of 'Numeric'\n"
               )
-        for col in self.df.columns:
+        for col in self.__non_numeric_features:
             self.choose_dtype(col)
 
     def add_to_mismatches(self, feature):
@@ -557,7 +583,7 @@ class ConsistencyChecker(Initiator):
         symbols = (self.df[feature].apply(self.make_symbol_list))
         symbols = list(itertools.chain.from_iterable(symbols))
         self.__symbol_dict[feature] = symbols
-        print("\nNon-numeric Symbols in "+feature+ " :", symbols)
+        print("\nNon-numeric Symbols in "+feature+ ": ", symbols)
 
     def disp_symbols(self):
         """Display all non-numeric symbols in all features"""
@@ -608,12 +634,17 @@ class ConsistencyChecker(Initiator):
         print("\nSelect your choice of dealing with inconsistencies in",
               feature, "\n")
         
-        choice = input("-> Enter 1 for 'Ignoring' the feature\n"
+        print("-> Enter 1 for 'Ignoring' the feature\n"
               "-> Enter 2 for 'Removing non-numeric symbols' in the feature\n"
               "-> Enter 3 for 'Removing the feature'\n"
               "\nWARNINGS :\n"
-              "[!] 'Removing the feature' leads to data loss\n"
-              "Your Choice : ")
+              "[!] 'Removing the feature' leads to data loss\n")
+        
+        choice = input("Your Choice[1/2/3]: ")
+        
+        if(choice==''):
+            choice = '1'
+            print("Default option, Ignore the feature triggered")
         
         if(choice=='1'):
             self.ignore(feature)
@@ -621,8 +652,6 @@ class ConsistencyChecker(Initiator):
             self.rem_symbols(feature)
         elif(choice=='3'):
             self.rem_feature(feature)
-        else:
-            self.rectify_mismatches(feature)
 
     def rectify_mismatches(self):
         """Rectifies Mismatches with the help of user input"""
@@ -630,6 +659,34 @@ class ConsistencyChecker(Initiator):
         for col in self.__mismatches:
             self.user_rectification(col)
 
+    def dtype_counter(self):
+        """Prints a table of the types of datatypes in the feature"""
+        
+        self.find_non_numerics()
+        
+        col_num = self.df.shape[1]
+        num = []
+        no_num = []
+        
+        for col in self.df.columns:
+            datype = str(self.df[col].dtype)
+            if(('int' in datype) or ('float' in datype)):
+                num.append(col)
+            else:
+                no_num.append(col)
+                
+        counter_table = pd.DataFrame({
+            'Feature Data Type': ['Numeric', 'Non numeric'],
+            'Count of Features': [len(num), len(no_num)]            
+        })
+    
+        print("The count of number of datatypes in the dataset =>\n")
+        print(counter_table)
+        print()
+        
+        
+        return (len(num), len(no_num), col_num)        
+    
     def establish_consistency(self):
         """Check and establish consistency in the dataframe"""
         
@@ -637,30 +694,57 @@ class ConsistencyChecker(Initiator):
                       'red','on_white'))
         print()
 
-        print("-> A datatype inconsistency occurs when columns are stored as ",
-              "datatypes that does not support the user's requirement\n",
-              "-> We consider only those features that the user expects to be ",
-              "numeric, but are non-numeric in the dataset",
+        print("-> A datatype inconsistency occurs when columns are stored as "
+              "datatypes that does not support the user's requirement\n"
+              "-> We consider only those features that the user expects to be "
+              "numeric, but are non-numeric as per the loaded dataset\n"
               "-> Example : A 'money' column needs to be numeric for better "
-              "analysis\n",
+              "analysis. But, a '$' symbol can cause the entire feature to be "
+              "encoded as a non-numeric entity. Such an incosistency needs to "
+              "be done away with in most cases\n"
               "-> Follow the prompts to rid the dataframe of datatype "
               "inconsistencies or mismatches\n")
+                
+        # run dtype_counter
+        num, no_num, col_num = self.dtype_counter()
         
-        # choose datatypes
-        self.make_dtype_dict()
-        
-        if(len(self.__mismatches)!=0):
-            # check and display mismatches; display non-numeric symbols
-            print("\nDatatype Inconsistencies :\n")
-            self.check_mismatch()
-            self.disp_mismatches()
-            self.disp_symbols()
-    
-            # user options
-            self.rectify_mismatches()
+        # warning
+        percent_num = num/col_num * 100
+        if(percent_num==100):
+            print("All features are encoded as numeric in the dataset. So, inconsistency check"
+                  " need not be performed.")
         else:
-            print(colored('There are no datatype mismatches!\n',
-                      'white','on_green'))
+            message = "You will have to answer "+str(len(self.__non_numeric_features))+" number of questions to check for inconsistency"
+            print(message)
+            print(colored("[!] It is advised you answer all questions and not skip",
+                      'yellow'))
+            
+            print("Do you wish to skip this step of checking for inconsistencies?")
+            choice = input("Your Choice[Y/N]: ")
+            choice = choice.lower()
+            
+            if(choice==''):
+                choice='y'
+        
+            if(choice=='n'):
+                # choose datatypes
+                self.make_dtype_dict()
+                
+                if(len(self.__mismatches)!=0):
+                    # check and display mismatches; display non-numeric symbols
+                    print("\nDatatype Inconsistencies :\n")
+                    self.check_mismatch()
+                    self.disp_mismatches()
+                    self.disp_symbols()
+            
+                    # user options
+                    self.rectify_mismatches()
+                else:
+                    print(colored('There are no datatype mismatches!\n',
+                              'green'))
+                
+            else:
+                pass  
 
             
 class DataCleaner(ColumnCleaner, RowCleaner, ValueCleaner, MissingValueDealer,

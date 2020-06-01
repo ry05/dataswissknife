@@ -9,7 +9,7 @@ A Handy Little Tool for your Data Science Operations
 ## Description
 *Are you a data science beginner who wishes you had access to a tool that would help you watch data science in action **without writing code**? Or are you someone who understands the importance of data in your business, **but lack the technical grounding to code**? Or are you an expert-level researcher or data scientist who just wishes to do some preliminary analysis or build baseline models **without having to spend time writing code**?* 
 
-If you fall into any of these categories, the DataSwissKnife project(abbreviated as DSK) will be of help to you. DSK is software that has been built with the purpose of aiding anybody who is familiar with necessary domain knowledge to do preliminary data science. The term **"domain knowledge"** signifies the relevant information a given user has with respect to the dataset he or she analysing. The kinds of information a user needs to know about their the concerned dataset include:
+If you fall into any of these categories, the DataSwissKnife project(abbreviated as DSK) will be of help to you. DSK is software that has been built with the purpose of aiding anybody who is familiar with necessary domain knowledge to do preliminary data science. The term **"domain knowledge"** signifies the relevant information a given user has with respect to the dataset he or she is analysing. The kinds of information a user needs to know about their the concerned dataset include:
 
 * What is the data about? Why is the data being analysed?
 * What features does the dataset contain? What are the expected data types of these features(i.e numerical or non-numerical)?
@@ -98,10 +98,9 @@ First, the user **obtains** raw data. This raw data is expected to be in a tabul
 
 The program also **provides suggestions** where possible. It **performs corresponding actions on the data** based on the user’s responses. After all data operations(cleaning and preprocessing), the **final outputs are stored** in the project’s directory(chosen earlier by the user) as raw data, cleaned data and preprocessed data. 
 
-The preprocessed data is **passed onto the model** training section. The program also **generates visualizations and reports** from the data provided and also the intermediate data outputs.
+The preprocessed data is **passed onto the model** training section. The program also **generates visualizations and reports** from the data provided and also the intermediate outputs.
 
-- Examples of how to use
-- Links to other wholesome explanations
+*NOTE: The auto-generated visualizations are still in rudimentary nature and will be enhanced in the future.*
 
 ### Dissecting DSK's Operation
 
@@ -314,7 +313,7 @@ We encourage you to try this out with other datasets and see DSK in action for y
 
 ## Caveat 
 
-While DSK will help with some very basic operations, we do not make a claim that DSK can replace traditional ways of learning and using data science i.e by writing code. Therefore, if you are a data science aspirant, we strongly urge you to continue learning your concepts and use DSK as a tool to help you generate some quick results.
+While DSK will help with some very basic operations, we do not make a claim that DSK can replace efficient ways of learning and using data science i.e by writing code. Therefore, if you are a data science aspirant, we strongly urge you to continue learning your concepts and use DSK as a tool to help you generate some quick results.
 
 ## Support
 DSK is a project that our team has worked on as a part of our final year project in our CSE undergraduate degree. Since we are making an attempt to deal with making data science more accessible and easy for everyone, we would strongly encourage the community's support in making DSK better and more user friendly with every future version.
