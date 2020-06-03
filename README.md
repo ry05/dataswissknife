@@ -64,6 +64,12 @@ In fig. 2, the different consumers of data science have been broadly categorized
 The gravity of the problem statement at hand calls for a new approach to data science. If data science has to be made simpler and easier for quickly generating essential results(without having to write code), full or partial control has to be transferred from the hands of the user to the system itself. In other words, *the system has to be automated.* Therefore, DSK is an attempt at setting the foundations for a system that will work in automated fashion to help users perform preliminary data science operations without writing code. Currently, DSK is prototypical and will be scaled to a full product in the future iterations of this project.
 
 ## Usage 
+
+### Suggestion
+It is recommended you download and run this project within a virtual environment, in order to ensure that the package installs do not tamper with the versions present in your system. The following links will help you learn why and how to use virtual environments in python.  
+* http://www.python.education/2017/10/setting-up-virtual-environment-in-python.html (For Windows users)
+* https://realpython.com/python-virtual-environments-a-primer/
+
 ### Instructions to run the tool
 
 1. Download or clone this repository onto your local system
