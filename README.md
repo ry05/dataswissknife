@@ -105,7 +105,7 @@ DSK is a project that our team has worked on as a part of our final year project
 In case of queries, suggestions or concerns, please feel free to reach me at *yadramshankar@gmail.com*
 
 ## Collaboration
-Thank you for your interest in working on DSK. Unfortunately, we are currently not accepting contributions to the project. We assure you that this is because we have a few more to add to DSK before we look at the future. As soon as DSK is ready for external collaboration, we will let you know. If you have noticed a bug or would just like to give us some feedback, you could fill up this [feedback form](https://forms.gle/1y8ZWYEj3LiQFVDJ6). If you wish to be notified of DSK's progress, let us know through the form. Promise, the mails you get will not be spam😄
+Thank you for your interest in working on DSK. Unfortunately, we are currently not accepting contributions to the project. We assure you that this is because we have a few more features to add to DSK before we look at the future. As soon as DSK is ready for external collaboration, we will let you know. If you have noticed a bug or would just like to give us some feedback, you could fill up this [feedback form](https://forms.gle/1y8ZWYEj3LiQFVDJ6). If you wish to be notified of DSK's progress, let us know through the form. It's our word, the mails you get will not be spam😄
 
 ## License
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT) 
