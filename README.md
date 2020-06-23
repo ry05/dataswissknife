@@ -58,7 +58,11 @@ In fig. 2, the different consumers of data science have been broadly categorized
 
 The gravity of the problem statement at hand calls for a new approach to data science. If data science has to be made simpler and easier for quickly generating essential results(without having to write code), full or partial control has to be transferred from the hands of the user to the system itself. In other words, *the system has to be automated.* Therefore, DSK is an attempt at setting the foundations for a system that will work in automated fashion to help users perform preliminary data science operations without writing code. Currently, DSK is prototypical and will be scaled to a full product in the future iterations of this project.  
 
-Read more about the Vision of DSK [here](https://github.com/ry05/dataswissknife/blob/master/VISION.md).
+Read more about the Vision of DSK [here](https://github.com/ry05/dataswissknife/blob/master/VISION.md).  
+
+## The Working of DSK
+
+The explanation of data flow through DSK has been [moved here](https://github.com/ry05/dataswissknife/blob/master/documents/How%20does%20DSK%20work.md). Head over to this link in order to understand how DSK helps an end user. Screenshots of the working have been included.
 
 ## Usage 
 
