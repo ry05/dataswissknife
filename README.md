@@ -62,7 +62,9 @@ Read more about the Vision of DSK [here](https://github.com/ry05/dataswissknife/
 
 ## The Working of DSK
 
-The explanation of data flow through DSK has been [moved here](https://github.com/ry05/dataswissknife/blob/master/documents/How%20does%20DSK%20work.md). Head over to this link in order to understand how DSK helps an end user. Screenshots of the working have been included.
+The explanation of data flow through DSK has been [moved here](https://github.com/ry05/dataswissknife/blob/master/documents/How%20does%20DSK%20work.md). Head over to this link in order to understand how DSK helps an end user. Screenshots of the working have been included.  
+
+If you would prefer seeing a video over reading about the working of DSK, [this video](https://bit.ly/3g36wS2) will help!
 
 ## Usage 
 
