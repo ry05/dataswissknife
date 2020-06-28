@@ -524,14 +524,23 @@ class ConsistencyChecker(Initiator):
     def check_mismatch(self):
         """Identifies mismatches of data types"""
 
-        for col in self.df.columns:
+        for col in self.__non_numeric_features:
             datype = str(self.df[col].dtype)
+            """
             if(('int' in datype) or ('float' in datype)):
                 if(self.__type_dict[col] == 'non-numeric'):
                     pass
             else:
                 if(self.__type_dict[col] == 'numeric'):
                     self.add_to_mismatches(col)
+                pass
+            """
+            if(self.__type_dict[col] == 'numeric'):
+                if(('int' in datype) or ('float' in datype)):
+                    pass
+                else:
+                    self.add_to_mismatches(col)
+            else:
                 pass
 
     def disp_mismatches(self):
@@ -714,7 +723,7 @@ class ConsistencyChecker(Initiator):
             print("All features are encoded as numeric in the dataset. So, inconsistency check"
                   " need not be performed.")
         else:
-            message = "You will have to answer "+str(len(self.__non_numeric_features))+" number of questions to check for inconsistency"
+            message = "You will have to answer "+str(len(self.__non_numeric_features))+" question per feature to check for inconsistency"
             print(message)
             print(colored("[!] It is advised you answer all questions and not skip",
                       'yellow'))
@@ -729,11 +738,12 @@ class ConsistencyChecker(Initiator):
             if(choice=='n'):
                 # choose datatypes
                 self.make_dtype_dict()
+                self.check_mismatch()
                 
                 if(len(self.__mismatches)!=0):
                     # check and display mismatches; display non-numeric symbols
                     print("\nDatatype Inconsistencies :\n")
-                    self.check_mismatch()
+                    #self.check_mismatch()
                     self.disp_mismatches()
                     self.disp_symbols()
             
