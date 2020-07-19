@@ -3,7 +3,7 @@
 A Handy Little Tool for your Data Science Operations
 
 <p align="center"> 
-   <img src="img/dsk_logo.png" width="400" height="300">
+   <img src="img/dsk_logo.png" width="300" height="300">
 </p>
 
 ## About
