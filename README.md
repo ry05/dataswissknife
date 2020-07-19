@@ -7,7 +7,7 @@ A Handy Little Tool for your Data Science Operations
 </p>
 
 ## About
-A productivity tool for data science operations to make doing data science simpler and faster, especially for the domain-erudite audience. Created by [Ramshankar Yadhunath](https://ry05.github.io/) and [Srivenkata Srikanth]().  
+A productivity tool for data science operations to make doing data science simpler and faster, especially for the domain-erudite audience. Created by [Ramshankar Yadhunath](https://ry05.github.io/) and [Srivenkata Srikanth](), with the help of [Arvind Sudheer]().
 
 [Find more details here](https://github.com/ry05/dataswissknife/wiki)
 
