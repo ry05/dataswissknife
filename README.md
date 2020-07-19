@@ -9,7 +9,7 @@ A Handy Little Tool for your Data Science Operations
 ## About
 A productivity tool for data science operations to make doing data science simpler and faster, especially for the domain-erudite audience. Created by [Ramshankar Yadhunath](https://ry05.github.io/) and [Srivenkata Srikanth]().  
 
-[Find the wiki for this repository here](https://github.com/ry05/dataswissknife/wiki)
+[Find more details here](https://github.com/ry05/dataswissknife/wiki)
 
 ## Description
 DSK is primarily software that has been built with the purpose of aiding anybody who is familiar with necessary domain expertise to do preliminary data science. It works as a handy productivity tool, making preliminary data science operations both simpler as well as faster.  
