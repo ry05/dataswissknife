@@ -1,6 +1,6 @@
 # DataSwissKnife
 
-A Handy Little Tool for your Data Science Operations
+A Handy Little Tool to aid your Data Science projects
 
 <p align="center"> 
    <img src="img/dsk_logo.png">
