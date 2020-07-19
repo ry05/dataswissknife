@@ -69,7 +69,7 @@ The explanation of data flow through DSK has been [moved here](https://github.co
 
 If you would prefer seeing a video over reading about the working of DSK, [this video](https://bit.ly/3g36wS2) will help!
 
-## Usage 
+## Installation and Usage
 
 It is recommended you download and run this project within a virtual environment, in order to ensure that the package installs do not tamper with the versions present in your system. The following links will help you learn why and how to use virtual environments in python.  
 * http://www.python.education/2017/10/setting-up-virtual-environment-in-python.html (For Windows users)
@@ -111,6 +111,15 @@ How to contribute:
 - Contact the maintainer at *yadramshankar@gmail.com*
 
 If you are in need of assistance to use the tool, please contact the maintainer. 
+
+## Credits
+
+### Development Leads
+- Ramshankar Yadhunath
+- Srivenkata Srikanth
+
+### Contributors
+- Arvind Sudheer
 
 ## License
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT) 
