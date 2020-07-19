@@ -6,6 +6,16 @@ A Handy Little Tool for your Data Science Operations
    <img src="img/dsk_logo.png">
 </p>
 
+## About
+A productivity tool for data science operations to make doing data science simpler and faster, especially for the non-technical, but domain-erudite audience. Created by [Ramshankar Yadhunath](https://ry05.github.io/) and [Srivenkata Srikanth](). 
+
+## Etymology of the Project's Name
+A [swiss army knife](https://en.wikipedia.org/wiki/Swiss_Army_knife) provides multiple utilities and is often a term asociated with the ability to being applicable to any scenario at hand. However, if the task requires a significantly major operation, the swiss knife is not a very useful tool. It would be wiser to replace it with something more complex.  
+
+Similarly, the DataSwissKnife(abbreviated as DSK) is quite a useful tool to get your data science project started. It will help you perform a wide range of preliminary operations without having to write code, will guide you through creating an organized structure for your projects and will also help you maintain your results for later use. However, to build sophisticated models using complex feature engineering techniques or to generate complex visualizations is not within the scope of DSK.  
+
+We highly recommend DSK as a tool you use when you first interact with your data. After the initial rounds of preliminary probing of the project at hand, it would be a better choice to use more sohpisticated tools or write explicit code for operations. We believe that the toughest part of a data science project is "to start it". DSK makes this part easy for you. 
+
 ## Description
 *Are you a data science beginner who wishes you had access to a tool that would help you watch data science in action **without writing code**? Or are you someone who understands the importance of data in your business, **but lack the technical grounding to code**? Or are you an expert-level researcher or data scientist who just wishes to do some preliminary analysis or build baseline models **without having to spend time writing code**?* 
 
