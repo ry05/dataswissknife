@@ -44,11 +44,25 @@ If you would prefer seeing a video over reading about the working of DSK, [this 
 
 ## Installation and Usage
 
-It is recommended you download and run this project within a virtual environment, in order to ensure that the package installs do not tamper with the versions present in your system. The following links will help you learn why and how to use virtual environments in python.  
+It is recommended you download and run this project **within a virtual environment**, in order to ensure that the package installs do not tamper with the versions present in your system. The following links will help you learn why and how to use virtual environments in python.  
 * http://www.python.education/2017/10/setting-up-virtual-environment-in-python.html (For Windows users)
 * https://realpython.com/python-virtual-environments-a-primer/
 
-The instructions to run the tool are as follows :
+### Install using pip
+
+1. Install the latest version of the [dataswissknife package](https://pypi.org/project/dataswissknife/) from PyPI
+
+   ```bash
+   pip install dataswissknife
+   ```
+   
+2. Run the following command to start the tool in your terminal
+
+   ```bash
+   dsk
+   ```
+
+### Install from Source
 
 1. Download or clone this repository onto your local system
 
