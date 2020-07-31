@@ -24,7 +24,6 @@ from termcolor import colored
 init()
 
 
-
 class Baseline:
     """
     Performances of sklearn classifiers with default arguments

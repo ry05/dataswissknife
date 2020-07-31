@@ -20,7 +20,17 @@ import os
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-import preprocess_data as prd
+__all__ = [
+  'main_code',
+  'clean_data',
+  'load_data',
+  'preprocess_data',
+  'classification_modelling',
+  'visualize_data',
+  'log_tracker',
+]
+
+from dataswissknife import preprocess_data as prd
 
 plt.style.use('bmh')
 

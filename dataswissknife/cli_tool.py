@@ -1,4 +1,4 @@
-""" Just another __init__.py file """
+""" The Command Line Tool that actually runs """
 
 __all__ = [
 	'main_code',
@@ -9,3 +9,8 @@ __all__ = [
 	'visualize_data',
 	'log_tracker',
 ]
+
+from dataswissknife import main_code
+
+def main():
+	main_code.initiate_tool()

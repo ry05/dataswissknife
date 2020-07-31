@@ -3,7 +3,7 @@
 A Handy Little Tool to aid your Data Science projects
 
 <p align="center"> 
-   <img src="img/dsk_logo.png">
+   <img src="https://github.com/ry05/dataswissknife/raw/master/img/dsk_logo.png">
 </p>
 
 ## About
@@ -19,7 +19,7 @@ DSK lets users load a raw block of tabular data onto it and asks relevant questi
 The diagram below represents the overall high-level functionality of DSK.  
 
 <p align="center"> 
-   <img src="img/dsk_block_diagram.png">
+   <img src="https://github.com/ry05/dataswissknife/raw/master/img/dsk_block_diagram.png">
 </p>
 
 ### What kind of questions does DSK ask the user?

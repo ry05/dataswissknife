@@ -2,6 +2,8 @@
 Module Log Tracker
 ======================
 This module performs the task of logging operations happening inside DSK
+
+UNDER PLANNING
 """
 
 class DataLogger:
