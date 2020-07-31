@@ -109,4 +109,4 @@ If you are in need of assistance to use the tool, please contact the maintainer.
 - Arvind Sudheer
 
 ## License
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+This project is licensed under the [GNU General Public License version 3](https://opensource.org/licenses/GPL-3.0).
