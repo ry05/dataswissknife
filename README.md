@@ -56,7 +56,7 @@ It is recommended you download and run this project **within a virtual environme
    pip install dataswissknife
    ```
    
-2. Run the following command to start the tool in your terminal
+2. Run the following command to start the tool in your terminal within the environment into which the package has been installed
 
    ```bash
    dsk
