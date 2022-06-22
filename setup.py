@@ -14,7 +14,7 @@ setuptools.setup(
     url="https://github.com/ry05/dataswissknife",
     packages=setuptools.find_packages(),
     install_requires=[
-        'numpy==1.18.3',
+        'numpy==1.22.0',
         'colorama==0.4.3',
         'seaborn==0.9.1',
         'matplotlib==3.2.1',
