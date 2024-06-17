@@ -20,7 +20,7 @@ setuptools.setup(
         'matplotlib==3.2.1',
         'pandas==1.0.3',
         'termcolor==1.1.0',
-        'scikit_learn==0.23.1',
+        'scikit_learn==1.5.0',
         'tabulate==0.8.7',
     ],
     classifiers=[
